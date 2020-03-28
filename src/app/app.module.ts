@@ -1,16 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { SideBarComponent } from './sidebar/sidebar.component';
+
+import {SidebarModule} from 'primeng/sidebar';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    SideBarComponent
   ],
   imports: [
-    BrowserModule
+    BrowserAnimationsModule,
+    BrowserModule,
+    SidebarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -28,8 +28,11 @@
                             "src/assets"
                         ],
                         "styles": [
-                            "src/styles.scss"
-                        ],
+                          "node_modules/primeicons/primeicons.css",
+                          "node_modules/primeng/resources/themes/nova-dark/theme.css",
+                          "node_modules/primeng/resources/primeng.min.css",
+                          "src/styles.css"
+                      ],
                         "scripts": []
                     },
                     "configurations": {
@@ -90,9 +93,6 @@
                             "src/assets"
                         ],
                         "styles": [
-                            "node_modules/primeicons/primeicons.css",
-                            "node_modules/primeng/resources/themes/nova-dark/theme.css",
-                            "node_modules/primeng/resources/primeng.min.css",
                             "src/styles.css"
                         ],
                         "scripts": []
