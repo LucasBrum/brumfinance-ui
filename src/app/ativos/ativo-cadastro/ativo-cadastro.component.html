@@ -1,0 +1,30 @@
+<div class="container">
+  <form>
+
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <h1>Ativos Financeiros</h1>
+      </div>
+      <p-fieldset legend="Cadastrar Ativos Financeiros" [toggleable]="true">
+        <div class="ui-g-12 ui-md-4 ui-fluid">
+          <label>Nome do Ativo</label>
+          <input pInputText type="text" name="nome" ngModel>
+        </div>
+
+        <div class="ui-g-12 ui-md-4 ui-fluid">
+          <label>Código do Ativo</label>
+          <input pInputText type="text" name="codigo" ngModel>
+        </div>
+
+        <div class="ui-g-12 ui-md-4 ui-fluid">
+          <label>Descrição</label>
+          <input pInputText type="text" name="codigo" ngModel>
+        </div>
+
+        <div class="ui-g-12">
+          <button pButton type="button" label="Cadastrar"></button>
+        </div>
+      </p-fieldset>
+    </div>
+  </form>
+</div>

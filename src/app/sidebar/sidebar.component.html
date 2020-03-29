@@ -1,7 +1,6 @@
 <p-sidebar [(visible)]="visibleSidebar1" [baseZIndex]="10000">
-  <h1 style="font-weight:normal">Left Sidebar</h1>
-  <button pButton type="button" (click)="visibleSidebar1 = false" label="Save" class="ui-button-success"></button>
-  <button pButton type="button" (click)="visibleSidebar1 = false" label="Cancel" class="ui-button-secondary"></button>
+  <h1 style="font-weight:normal">Brum Finance</h1>
+  <p-menu [model]="items"></p-menu>
 </p-sidebar>
 
-<button pButton type="button" (click)="visibleSidebar1 = true" icon="pi pi-arrow-right"></button>
+<button pButton type="button" (click)="visibleSidebar1 = true" icon="pi pi-align-justify"></button>
