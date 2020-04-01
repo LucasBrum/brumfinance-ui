@@ -10,6 +10,8 @@ import {MenuModule} from 'primeng/menu';
 import {InputTextModule} from 'primeng/inputtext';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {FieldsetModule} from 'primeng/fieldset';
+import {TableModule} from 'primeng/table';
+import {TooltipModule} from 'primeng/tooltip';
 
 import { AppComponent } from './app.component';
 import { SideBarComponent } from './sidebar/sidebar.component';
@@ -39,7 +41,9 @@ import { AtivosGridComponent } from './ativos/ativos-grid/ativos-grid.component'
     InputTextModule,
     InputTextareaModule,
     FieldsetModule,
-    HttpClientModule
+    HttpClientModule,
+    TableModule,
+    TooltipModule
 
   ],
   providers: [AtivoService],

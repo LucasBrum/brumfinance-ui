@@ -13,8 +13,8 @@ export class AtivoService {
   listar(): Promise<any> {
     return this.http.get(`${this.ativosUrl}`)
       .toPromise()
-      .then(response => {
-        console.log(response);
-      });
+      .then(response => response);
+
   }
+
 }
