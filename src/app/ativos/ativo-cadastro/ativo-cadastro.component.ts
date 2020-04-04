@@ -1,8 +1,11 @@
+import { AtivoService } from './../ativo.service';
 import { Component, OnInit } from '@angular/core';
 
 import { Ativo, Categoria } from './../../core/model';
 import { FormControl } from '@angular/forms';
 import { CategoriaService } from '../categoria.service';
+import { ErrorHandlerService } from 'src/app/core/error-handler.service';
+import { ToastyService } from 'ng2-toasty';
 
 @Component({
   selector: 'app-ativo-cadastro',
@@ -15,14 +18,28 @@ export class AtivoCadastroComponent implements OnInit {
 
   categorias = new Categoria();
 
-  constructor(private categoriaService: CategoriaService) { }
+  constructor(
+    private categoriaService: CategoriaService,
+    private ativoService: AtivoService,
+    private toasty: ToastyService,
+    private errorHandlerService: ErrorHandlerService
+  ) { }
 
   ngOnInit(): void {
     this.carregarCategorias();
   }
 
-  salvar(form: FormControl) {
-    console.log(this.ativo);
+  adicionar(form: FormControl) {
+    this.ativoService.adicionar(this.ativo)
+      .then(() => {
+        this.toasty.success('Ativo adicionado com sucesso.');
+
+        form.reset();
+        this.ativo = new Ativo();
+        this.ativoService.listar();
+
+      })
+      .catch(erro => this.errorHandlerService.handle(erro));
   }
 
   carregarCategorias() {
@@ -30,7 +47,8 @@ export class AtivoCadastroComponent implements OnInit {
       .then(categorias => {
         this.categorias = categorias
           .map(c => ({ label: c.nome, value: c.id }));
-      });
+      })
+      .catch(erro => this.errorHandlerService.handle(erro));
   }
 
 }

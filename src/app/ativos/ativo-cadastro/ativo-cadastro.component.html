@@ -1,18 +1,22 @@
 <div class="container">
-  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="adicionar(f)">
 
     <div class="ui-g">
       <div class="ui-g-12">
         <h1>Ativos Financeiros</h1>
 
         <p-fieldset legend="Cadastrar Ativos Financeiros" [toggleable]="true" [collapsed]="true">
+          <div class="ui-g-12 ui-md-4 ui-fluid">
+            <label>Nome do Ativo</label>
+            <input pInputText type="text" [(ngModel)]="ativo.nome" name="codigo">
+          </div>
 
-          <div class="ui-g-12 ui-md-6 ui-fluid">
+          <div class="ui-g-12 ui-md-4 ui-fluid">
             <label>Código do Ativo</label>
             <input pInputText type="text" [(ngModel)]="ativo.codigo" name="codigo">
           </div>
 
-          <div class="ui-g-12 ui-md-6 ui-fluid">
+          <div class="ui-g-12 ui-md-4 ui-fluid">
             <label>Categoria</label>
             <p-dropdown [options]="categorias" placeholder="Selecione" [(ngModel)]="ativo.categoriaAtivo.id" name="categoriaAtivo"></p-dropdown>
           </div>

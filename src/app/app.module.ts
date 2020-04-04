@@ -43,8 +43,7 @@ import { CategoriaService } from './ativos/categoria.service';
     HttpClientModule,
     TableModule,
     TooltipModule,
-    DropdownModule
-
+    DropdownModule,
 
   ],
   providers: [AtivoService, CategoriaService],

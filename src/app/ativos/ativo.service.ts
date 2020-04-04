@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Ativo } from '../core/model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +16,13 @@ export class AtivoService {
       .toPromise()
       .then(response => response);
 
+  }
+
+  adicionar(ativo: Ativo): Promise<Ativo> {
+    const headers = new HttpHeaders();
+    headers.append('content-type', 'application/json');
+
+    return this.http.post<Ativo>(this.ativosUrl, ativo, {headers})
+      .toPromise().then(response => response);
   }
 }

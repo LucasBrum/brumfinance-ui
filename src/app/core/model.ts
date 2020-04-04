@@ -3,6 +3,7 @@ export class Categoria {
 }
 
 export class Ativo {
+  nome: string;
   codigo: string;
   descricao: string;
   categoriaAtivo = new Categoria();
