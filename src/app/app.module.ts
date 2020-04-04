@@ -18,6 +18,7 @@ import { AtivosGridComponent } from './ativos/ativos-grid/ativos-grid.component'
 import { CoreModule } from './core/core.module';
 
 import { AtivoService } from './ativos/ativo.service';
+import { CategoriaService } from './ativos/categoria.service';
 
 
 
@@ -27,8 +28,6 @@ import { AtivoService } from './ativos/ativo.service';
     AppComponent,
     AtivoCadastroComponent,
     AtivosGridComponent
-
-
   ],
   imports: [
     BrowserAnimationsModule,
@@ -48,7 +47,7 @@ import { AtivoService } from './ativos/ativo.service';
 
 
   ],
-  providers: [AtivoService],
+  providers: [AtivoService, CategoriaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -16,5 +16,4 @@ export class AtivoService {
       .then(response => response);
 
   }
-
 }

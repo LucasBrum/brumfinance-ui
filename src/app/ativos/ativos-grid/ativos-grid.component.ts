@@ -47,6 +47,4 @@ export class AtivosGridComponent implements OnInit {
       .then(ativos => this.ativos = ativos);
   }
 
-  
-
 }
