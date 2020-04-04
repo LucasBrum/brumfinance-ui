@@ -1,8 +1,8 @@
-import { AtivoService } from './ativos/ativo.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
@@ -16,6 +16,8 @@ import { AppComponent } from './app.component';
 import { AtivoCadastroComponent } from './ativos/ativo-cadastro/ativo-cadastro.component';
 import { AtivosGridComponent } from './ativos/ativos-grid/ativos-grid.component';
 import { CoreModule } from './core/core.module';
+
+import { AtivoService } from './ativos/ativo.service';
 
 
 
@@ -32,8 +34,10 @@ import { CoreModule } from './core/core.module';
     BrowserAnimationsModule,
     BrowserModule,
     ButtonModule,
+    FormsModule,
 
     CoreModule,
+
     InputTextModule,
     InputTextareaModule,
     FieldsetModule,

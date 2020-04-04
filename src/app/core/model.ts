@@ -1,7 +1,6 @@
 export class Ativo {
-
   codigo: string;
-  nome: string;
+  categoriaAtivo: string;
   descricao: string;
-
 }
+

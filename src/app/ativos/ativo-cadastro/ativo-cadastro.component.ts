@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Ativo } from './../../core/model';
+import { FormControl } from '@angular/forms';
+
 @Component({
   selector: 'app-ativo-cadastro',
   templateUrl: './ativo-cadastro.component.html',
@@ -7,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AtivoCadastroComponent implements OnInit {
 
-  ativo = {};
+  ativo = new Ativo();
 
   categorias: any[];
 
@@ -16,5 +19,8 @@ export class AtivoCadastroComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  salvar(form: FormControl) {
+    console.log(this.ativo);
+  }
 
 }

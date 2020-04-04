@@ -1,37 +1,40 @@
 <div class="container">
-  <form>
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
 
     <div class="ui-g">
       <div class="ui-g-12">
         <h1>Ativos Financeiros</h1>
+
+        <p-fieldset legend="Cadastrar Ativos Financeiros" [toggleable]="true" [collapsed]="true">
+
+          <div class="ui-g-12 ui-md-6 ui-fluid">
+            <label>Código do Ativo</label>
+            <input pInputText type="text" [(ngModel)]="ativo.codigo" name="codigo">
+          </div>
+
+          <div class="ui-g-12 ui-md-6 ui-fluid">
+            <label>Categoria</label>
+            <p-dropdown [options]="cities1" [(ngModel)]="ativo.categoriaAtivo" name="categoriaAtivo"></p-dropdown>
+          </div>
+
+          <div class="ui-g-12 ui-md-12 ui-fluid">
+            <label>Descrição</label>
+            <span class="ui-float-label">
+              <textarea cols="30" pinputtextarea rows="5"
+                class="ui-inputtext ui-corner-all ui-state-default ui-widget" [(ngModel)]="ativo.descricao"
+                name="descricao">
+            </textarea>
+
+            </span>
+          </div>
+
+          <div class="ui-g-12 ui-md-12 ui-fluid">
+            <button pButton type="submit" label="Cadastrar"></button>
+          </div>
+
+        </p-fieldset>
+
       </div>
-      <p-fieldset legend="Cadastrar Ativos Financeiros" [toggleable]="true" [collapsed]="true">
-        <div class="ui-g-12 ui-md-4 ui-fluid">
-          <label>Nome do Ativo</label>
-          <input pInputText type="text" name="nome" ngModel>
-        </div>
-
-        <div class="ui-g-12 ui-md-4 ui-fluid">
-          <label>Código do Ativo</label>
-          <input pInputText type="text" name="codigo" ngModel>
-        </div>
-
-        <div class="ui-g-12 ui-md-4 ui-fluid">
-          <label>Categoria</label>
-          <p-dropdown [options]="cities1" [(ngModel)]="selectedCity1"></p-dropdown>
-        </div>
-
-        <div class="ui-g-12 ui-md-12 ui-fluid">
-          <span class="ui-float-label">
-            <textarea cols="30" id="float-input" pinputtextarea="" rows="5" class="ui-inputtext ui-corner-all ui-state-default ui-widget"></textarea>
-            <label for="float-input">Descrição</label>
-          </span>
-        </div>
-
-        <div class="ui-g-12 ui-md-12 ui-fluid">
-          <button pButton type="button" label="Cadastrar"></button>
-        </div>
-      </p-fieldset>
     </div>
   </form>
 </div>
