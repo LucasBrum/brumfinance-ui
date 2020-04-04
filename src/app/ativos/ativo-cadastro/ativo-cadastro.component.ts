@@ -15,8 +15,9 @@ import { ToastyService } from 'ng2-toasty';
 export class AtivoCadastroComponent implements OnInit {
 
   ativo = new Ativo();
-
   categorias = new Categoria();
+
+  displayModal = false;
 
   constructor(
     private categoriaService: CategoriaService,
@@ -50,5 +51,9 @@ export class AtivoCadastroComponent implements OnInit {
       })
       .catch(erro => this.errorHandlerService.handle(erro));
   }
+
+  showModalDialog() {
+    this.displayModal = true;
+}
 
 }

@@ -11,6 +11,8 @@ import {FieldsetModule} from 'primeng/fieldset';
 import {TableModule} from 'primeng/table';
 import {TooltipModule} from 'primeng/tooltip';
 import {DropdownModule} from 'primeng/dropdown';
+import {DialogModule} from 'primeng/dialog';
+import {ToolbarModule} from 'primeng/toolbar';
 
 import { AppComponent } from './app.component';
 import { AtivoCadastroComponent } from './ativos/ativo-cadastro/ativo-cadastro.component';
@@ -34,6 +36,7 @@ import { CategoriaService } from './ativos/categoria.service';
     BrowserModule,
     ButtonModule,
     FormsModule,
+    ToolbarModule,
 
     CoreModule,
 
@@ -44,6 +47,7 @@ import { CategoriaService } from './ativos/categoria.service';
     TableModule,
     TooltipModule,
     DropdownModule,
+    DialogModule
 
   ],
   providers: [AtivoService, CategoriaService],

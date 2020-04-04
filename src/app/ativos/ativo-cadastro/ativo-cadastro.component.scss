@@ -1,0 +1,15 @@
+.cadastrar-ativo-dialog {
+  width: 50vw;
+}
+
+@media screen and (max-width: 40em) {
+  .mydialog {
+      width: 75vw;
+  }
+}
+
+.input-pesquisar {
+  margin: 0px 8px 0px 0px;
+  position: relative;
+  top: 2px;
+}
