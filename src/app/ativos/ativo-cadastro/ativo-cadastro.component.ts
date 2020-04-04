@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AtivoCadastroComponent implements OnInit {
 
+  ativo = {};
+
+  categorias: any[];
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
 
 }

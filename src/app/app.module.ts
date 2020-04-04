@@ -4,20 +4,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
-import {SidebarModule} from 'primeng/sidebar';
 import {ButtonModule} from 'primeng/button';
-import {MenuModule} from 'primeng/menu';
 import {InputTextModule} from 'primeng/inputtext';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {FieldsetModule} from 'primeng/fieldset';
 import {TableModule} from 'primeng/table';
 import {TooltipModule} from 'primeng/tooltip';
+import {DropdownModule} from 'primeng/dropdown';
 
 import { AppComponent } from './app.component';
-import { SideBarComponent } from './sidebar/sidebar.component';
 import { AtivoCadastroComponent } from './ativos/ativo-cadastro/ativo-cadastro.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { AtivosGridComponent } from './ativos/ativos-grid/ativos-grid.component';
+import { CoreModule } from './core/core.module';
 
 
 
@@ -25,9 +23,7 @@ import { AtivosGridComponent } from './ativos/ativos-grid/ativos-grid.component'
 @NgModule({
   declarations: [
     AppComponent,
-    SideBarComponent,
     AtivoCadastroComponent,
-    NavbarComponent,
     AtivosGridComponent
 
 
@@ -35,15 +31,17 @@ import { AtivosGridComponent } from './ativos/ativos-grid/ativos-grid.component'
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
-    SidebarModule,
     ButtonModule,
-    MenuModule,
+
+    CoreModule,
     InputTextModule,
     InputTextareaModule,
     FieldsetModule,
     HttpClientModule,
     TableModule,
-    TooltipModule
+    TooltipModule,
+    DropdownModule
+
 
   ],
   providers: [AtivoService],

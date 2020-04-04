@@ -34,7 +34,11 @@ export class AtivosGridComponent implements OnInit {
     this.colunas = [
 
       { field: 'codigo', header: 'Código'},
-      { field: 'quantidade', header: 'Quantidade'}
+      { field: 'quantidade', header: 'Quantidade'},
+      { field: 'precoAtual', header: 'Preço Atual'},
+      { field: 'totalDinheiro', header: 'Tenho (R$)'},
+      { field: 'totalPorcentagem', header: 'Ganho/Perda'},
+      { field: 'dataAtualizacao', header: 'Últ. atualização'}
     ];
   }
 
@@ -42,5 +46,7 @@ export class AtivosGridComponent implements OnInit {
     this.ativoService.listar()
       .then(ativos => this.ativos = ativos);
   }
+
+  
 
 }
