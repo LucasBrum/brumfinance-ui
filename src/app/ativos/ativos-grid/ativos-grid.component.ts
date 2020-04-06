@@ -1,6 +1,7 @@
 import { AtivoService } from './../ativo.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Table } from 'primeng/table/table';
 
 @Component({
   selector: 'app-ativos-grid',
@@ -23,8 +24,8 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 export class AtivosGridComponent implements OnInit {
 
   ativos = [];
-
   colunas: any[];
+  @ViewChild('tabela', {static: true}) grid: Table;
 
   constructor(private ativoService: AtivoService) {}
 
@@ -47,4 +48,10 @@ export class AtivosGridComponent implements OnInit {
       .then(ativos => this.ativos = ativos);
   }
 
+  excluir(ativo: any) {
+    this.ativoService.excluir(ativo.id)
+    .then(() => {
+      this.grid.reset();
+    });
+   }
 }

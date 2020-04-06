@@ -1,7 +1,7 @@
 <div class="container">
   <div class="ui-g">
     <div class="ui-g-12 ui-md-12 ui-fluid">
-      <p-table [columns]="colunas" [value]="ativos" dataKey="codigo" [responsive]="true">
+      <p-table [columns]="colunas" [value]="ativos" dataKey="codigo" [responsive]="true" #tabela>
         <ng-template pTemplate="header" let-columns>
           <tr>
             <th style="width: 3em"></th>
@@ -13,42 +13,45 @@
             </th>
           </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
+        <ng-template pTemplate="body" let-ativo let-expanded="expanded" let-columns="columns">
           <tr>
             <td>
-              <a href="" [pRowToggler]="rowData">
+              <a href="" [pRowToggler]="ativo">
                 <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
               </a>
             </td>
 
-            <td style="text-align: center;">{{rowData.codigo}}</td>
-            <td style="text-align: center;">{{rowData.quantidade}}</td>
-            <td style="text-align: center;">{{rowData.precoAtual === null ? '0,00' : rowData.precoAtual}}</td>
-            <td style="text-align: center;">{{rowData.totalDinheiro === null ? '0,00' : rowData.totalDinheiro}}</td>
-            <td style="text-align: center;">{{rowData.totalPorcentagem === null ? '0,00' : rowData.totalPorcentagem}}</td>
-            <td style="text-align: center;">{{rowData.dataAtualizacao === null ? '---' : rowData.dataAtualizacao}}</td>
+            <td style="text-align: center;">{{ativo.codigo}}</td>
+            <td style="text-align: center;">{{ativo.quantidade}}</td>
+            <td style="text-align: center;">{{ativo.precoAtual === null ? '0,00' : ativo.precoAtual}}</td>
+            <td style="text-align: center;">{{ativo.totalDinheiro === null ? '0,00' : ativo.totalDinheiro}}</td>
+            <td style="text-align: center;">{{ativo.totalPorcentagem === null ? '0,00' : ativo.totalPorcentagem}}</td>
+            <td style="text-align: center;">{{ativo.dataAtualizacao === null ? '---' : ativo.dataAtualizacao}}</td>
 
             <td>
-              <a class="btn-edit" pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></a>
-              <button class="btn-delete ui-button-danger" pButton icon="pi pi-trash" pTooltip="Excluir"
-                tooltipPosition="top"></button>
+              <button class="btn-edit" pButton icon="pi pi-pencil"
+                pTooltip="Editar" tooltipPosition="top">
+              </button>
+              <button class="btn-delete ui-button-danger" pButton icon="pi pi-trash"
+                pTooltip="Excluir" tooltipPosition="top" (click)="excluir(ativo)">
+              </button>
             </td>
           </tr>
         </ng-template>
-        <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
+        <ng-template pTemplate="rowexpansion" let-ativo let-columns="columns">
           <tr>
             <td [attr.colspan]="columns.length + 1">
               <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
                 <div class="ui-g-12 ui-md-12">
                   <div class="ui-g">
                     <div class="ui-g-12">
-                      <b>Descrição:</b> {{rowData.descricao}}
+                      <b>Descrição:</b> {{ativo.descricao}}
                     </div>
                     <div class="ui-g-12">
-                      <b>Categoria:</b> {{rowData.categoriaAtivo.nome}}
+                      <b>Categoria:</b> {{ativo.categoriaAtivo.nome}}
                     </div>
                     <div class="ui-g-12">
-                      <b>Tipo:</b> {{rowData.categoriaAtivo.tipo}}
+                      <b>Tipo:</b> {{ativo.categoriaAtivo.tipo}}
                     </div>
                   </div>
                 </div>
