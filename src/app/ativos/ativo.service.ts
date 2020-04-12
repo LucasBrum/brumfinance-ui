@@ -1,8 +1,14 @@
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Ativo } from '../core/model';
 import { Header } from 'primeng/api/shared';
+
+export class AtivoFiltro {
+  codigo: string;
+  pagina = 0;
+  itensPorPagina = 3;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +19,23 @@ export class AtivoService {
 
   constructor(private http: HttpClient) { }
 
-  listar(): Promise<any> {
-    return this.http.get(`${this.API}/ativos`)
+  listar(filtro: AtivoFiltro): Promise<any> {
+
+    let params = new HttpParams();
+
+    params = params.set('page', filtro.pagina.toString());
+    params = params.set('size', filtro.itensPorPagina.toString());
+
+    return this.http.get(`${this.API}/ativos`, {params})
       .toPromise()
-      .then(response => response);
+      .then(response => {
+        const ativos = response['content'];
+        const resultado = {
+          ativos,
+          total: response['totalElements']
+        };
+        return resultado;
+      });
   }
 
   adicionar(ativo: Ativo): Promise<Ativo> {

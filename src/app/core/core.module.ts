@@ -23,6 +23,7 @@ import { ErrorHandlerService } from './error-handler.service';
     MenuModule,
     ButtonModule,
     ToastyModule.forRoot(),
+
   ],
   exports: [
     NavbarComponent,

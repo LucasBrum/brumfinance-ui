@@ -36,8 +36,6 @@ export class AtivoCadastroComponent implements OnInit {
         this.toasty.success('Ativo adicionado com sucesso.');
 
         form.reset();
-        this.ativo = new Ativo();
-        this.ativoService.listar();
 
       })
       .catch(erro => this.errorHandlerService.handle(erro));

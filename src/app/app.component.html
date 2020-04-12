@@ -6,4 +6,11 @@
 <app-ativo-cadastro></app-ativo-cadastro>
 <app-ativos-grid></app-ativos-grid>
 
-<ng2-toasty [position]="'top-center'" ></ng2-toasty>
+<ng2-toasty></ng2-toasty>
+<p-confirmDialog header="Confirmação" icon="pi pi-exclamation-triangle" #confirmacao>
+  <p-footer>
+    <button type="button" pButton="pi pi-check" label="Sim" (click)="confirmacao.accept()"></button>
+    <button type="button" pButton="pi pi-check" label="Não" (click)="confirmacao.reject()"></button>
+  </p-footer>
+</p-confirmDialog>
+

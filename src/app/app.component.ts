@@ -14,6 +14,7 @@ export class AppComponent {
 
   ) {
     this.toastyConfig.theme = 'bootstrap';
-
+    this.toastyConfig.position = 'top-center';
+    this.toastyConfig.timeout = 5000;
   }
 }
