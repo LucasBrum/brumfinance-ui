@@ -7,7 +7,7 @@ import { Header } from 'primeng/api/shared';
 export class AtivoFiltro {
   codigo: string;
   pagina = 0;
-  itensPorPagina = 3;
+  itensPorPagina = 10;
 }
 
 @Injectable({
