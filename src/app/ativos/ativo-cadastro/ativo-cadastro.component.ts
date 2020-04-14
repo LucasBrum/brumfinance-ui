@@ -1,11 +1,12 @@
-import { AtivoService } from './../ativo.service';
-import { Component, OnInit } from '@angular/core';
+import { AtivoService, AtivoFiltro } from './../ativo.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { Ativo, Categoria } from './../../core/model';
 import { FormControl } from '@angular/forms';
 import { CategoriaService } from '../categoria.service';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { ToastyService } from 'ng2-toasty';
+import { Table } from 'primeng/table/table';
 
 @Component({
   selector: 'app-ativo-cadastro',
@@ -23,7 +24,7 @@ export class AtivoCadastroComponent implements OnInit {
     private categoriaService: CategoriaService,
     private ativoService: AtivoService,
     private toasty: ToastyService,
-    private errorHandlerService: ErrorHandlerService
+    private errorHandlerService: ErrorHandlerService,
   ) { }
 
   ngOnInit(): void {
@@ -36,6 +37,8 @@ export class AtivoCadastroComponent implements OnInit {
         this.toasty.success('Ativo adicionado com sucesso.');
 
         form.reset();
+        this.ativo = new Ativo();
+        this.displayModal = false;
 
       })
       .catch(erro => this.errorHandlerService.handle(erro));

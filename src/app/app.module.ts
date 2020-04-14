@@ -21,7 +21,7 @@ import { AtivoCadastroComponent } from './ativos/ativo-cadastro/ativo-cadastro.c
 import { AtivosGridComponent } from './ativos/ativos-grid/ativos-grid.component';
 import { CoreModule } from './core/core.module';
 
-import { AtivoService } from './ativos/ativo.service';
+import { AtivoService, AtivoFiltro } from './ativos/ativo.service';
 import { CategoriaService } from './ativos/categoria.service';
 
 
@@ -53,7 +53,7 @@ import { CategoriaService } from './ativos/categoria.service';
     DialogModule
 
   ],
-  providers: [AtivoService, CategoriaService, ConfirmationService],
+  providers: [AtivoService, CategoriaService, ConfirmationService, AtivoFiltro],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

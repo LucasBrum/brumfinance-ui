@@ -43,7 +43,8 @@ export class AtivoService {
     headers.append('content-type', 'application/json');
 
     return this.http.post<Ativo>(`${this.API}/ativos`, ativo, {headers})
-      .toPromise().then(response => response);
+      .toPromise();
+
   }
 
    excluir(id: number): Promise<void> {
