@@ -3,8 +3,8 @@
 
 -->
 <app-navbar></app-navbar>
-<app-ativo-cadastro></app-ativo-cadastro>
-<app-ativos-grid></app-ativos-grid>
+<app-ativo-cadastro (cadastroEfetuado)="ativosGrid.listar()"></app-ativo-cadastro>
+<app-ativos-grid #ativosGrid></app-ativos-grid>
 
 <ng2-toasty></ng2-toasty>
 <p-confirmDialog header="Confirmação" icon="pi pi-exclamation-triangle" #confirmacao>

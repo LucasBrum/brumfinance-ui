@@ -1,12 +1,13 @@
-import { AtivoService, AtivoFiltro } from './../ativo.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AtivoService } from './../ativo.service';
+import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 
 import { Ativo, Categoria } from './../../core/model';
 import { FormControl } from '@angular/forms';
 import { CategoriaService } from '../categoria.service';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { ToastyService } from 'ng2-toasty';
-import { Table } from 'primeng/table/table';
+
+type ativo = Ativo;
 
 @Component({
   selector: 'app-ativo-cadastro',
@@ -15,11 +16,6 @@ import { Table } from 'primeng/table/table';
 })
 export class AtivoCadastroComponent implements OnInit {
 
-  ativo = new Ativo();
-  categorias = new Categoria();
-
-  displayModal = false;
-
   constructor(
     private categoriaService: CategoriaService,
     private ativoService: AtivoService,
@@ -27,18 +23,26 @@ export class AtivoCadastroComponent implements OnInit {
     private errorHandlerService: ErrorHandlerService,
   ) { }
 
+  ativo = new Ativo();
+  categorias = new Categoria();
+
+  displayModal = false;
+
+  @Output() cadastroEfetuado = new EventEmitter<Ativo>();
+
   ngOnInit(): void {
     this.carregarCategorias();
   }
 
   adicionar(form: FormControl) {
     this.ativoService.adicionar(this.ativo)
-      .then(() => {
+      .then((response) => {
         this.toasty.success('Ativo adicionado com sucesso.');
 
         form.reset();
         this.ativo = new Ativo();
         this.displayModal = false;
+        this.cadastroEfetuado.emit(response);
 
       })
       .catch(erro => this.errorHandlerService.handle(erro));
