@@ -9,29 +9,32 @@
 ::ng-deep .pi-money-bill:before {
   content: "\e974";
   font-size: 30px;
-  color: green;
+
 }
 
 ::ng-deep .pi-chart-line:before {
   content: "\e98b";
   font-size: 30px;
-  color: #00e6e6;
 }
 
 ::ng-deep .pi-home:before {
   content: "\e925";
   font-size: 30px;
-  color: #7200ff;
 }
 
 ::ng-deep .pi-minus-circle:before {
   content: "\e910";
   font-size: 30px;
-  color: red;
 }
 
 ::ng-deep body .ui-menu {
   padding: 0;
+  background-color: #ffffff;
+  border: 0px solid #c8c8c8;
+}
+
+::ng-deep body .ui-menubar {
+  padding: 0px;
   background-color: #ffffff;
   border: 0px solid #c8c8c8;
 }

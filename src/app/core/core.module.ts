@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ToastyModule } from 'ng2-toasty';
 import {SidebarModule} from 'primeng/sidebar';
-import {MenuModule} from 'primeng/menu';
+import {MenubarModule} from 'primeng/menubar';
 import { ButtonModule } from 'primeng/button';
 
 import { NavbarComponent } from './navbar/navbar.component';
@@ -20,7 +20,7 @@ import { ErrorHandlerService } from './error-handler.service';
   imports: [
     CommonModule,
     SidebarModule,
-    MenuModule,
+    MenubarModule,
     ButtonModule,
     ToastyModule.forRoot(),
 
