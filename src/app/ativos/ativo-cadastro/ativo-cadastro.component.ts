@@ -59,6 +59,6 @@ export class AtivoCadastroComponent implements OnInit {
 
   showModalDialog() {
     this.displayModal = true;
-}
+  }
 
 }

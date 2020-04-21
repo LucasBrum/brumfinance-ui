@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
 import {InputTextareaModule} from 'primeng/inputtextarea';
+import {InputMaskModule} from 'primeng/inputmask';
 import {FieldsetModule} from 'primeng/fieldset';
 import {TableModule} from 'primeng/table';
 import {TooltipModule} from 'primeng/tooltip';
@@ -15,14 +16,18 @@ import {DialogModule} from 'primeng/dialog';
 import {ToolbarModule} from 'primeng/toolbar';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
+import {CalendarModule} from 'primeng/calendar';
+import {SpinnerModule} from 'primeng/spinner';
 
 import { AppComponent } from './app.component';
 import { AtivoCadastroComponent } from './ativos/ativo-cadastro/ativo-cadastro.component';
 import { AtivosGridComponent } from './ativos/ativos-grid/ativos-grid.component';
+import { AporteCadastroComponent } from './aportes/aporte-cadastro/aporte-cadastro.component';
 import { CoreModule } from './core/core.module';
 
 import { AtivoService, AtivoFiltro } from './ativos/ativo.service';
 import { CategoriaService } from './ativos/categoria.service';
+import { AporteService } from './aportes/aporte.service';
 
 
 
@@ -31,7 +36,8 @@ import { CategoriaService } from './ativos/categoria.service';
   declarations: [
     AppComponent,
     AtivoCadastroComponent,
-    AtivosGridComponent
+    AtivosGridComponent,
+    AporteCadastroComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -40,6 +46,9 @@ import { CategoriaService } from './ativos/categoria.service';
     FormsModule,
     ToolbarModule,
     ConfirmDialogModule,
+    CalendarModule,
+    SpinnerModule,
+    InputMaskModule,
 
     CoreModule,
 
@@ -53,7 +62,7 @@ import { CategoriaService } from './ativos/categoria.service';
     DialogModule
 
   ],
-  providers: [AtivoService, CategoriaService, ConfirmationService, AtivoFiltro],
+  providers: [AtivoService, CategoriaService, ConfirmationService, AtivoFiltro, AporteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

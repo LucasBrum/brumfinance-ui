@@ -1,0 +1,46 @@
+<div class="container">
+  <form  autocomplete="off" >
+
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <h1>Aportes Financeiros</h1>
+
+        <p-toolbar>
+          <div class="ui-toolbar-group-left">
+            <button type="button" class="btn-cadastrar-aporte" (click)="showModalDialog()" pButton icon="pi pi-save" label="Cadastrar Aporte"></button>
+          </div>
+
+          <div class="ui-toolbar-group-right">
+            <input type="text" pInputText class="input-pesquisar "/>
+            <button pButton type="button" icon="pi pi-search" ></button>
+          </div>
+          </p-toolbar>
+
+          <p-dialog header="Cadastro de Aportes"  [(visible)]="displayModal" [modal]="true" [style]="{width: '30vw'}" >
+
+            <div class="ui-g-12 ui-md-6 ui-fluid aporte-modal">
+              <label>Data do Aporte</label>
+              <p-inputMask mask="99/99/9999" placeholder="99/99/9999" slotChar="dd/mm/yyyy"></p-inputMask>
+
+              <label>Ativos</label>
+              <p-dropdown [options]="ativos" ></p-dropdown>
+
+              <label>Quantidade</label>
+              <p-spinner [min]="0"></p-spinner>
+
+              <label>Valor</label>
+              <input pInputText type="text" name="valor" placeholder="0,00" currencyMask
+                [options]="{prefix:'', thousands: '.', decimal: ','}" ngModel>
+            </div>
+
+            <p-footer>
+              <button pButton type="submit" label="Cadastrar"></button>
+            </p-footer>
+
+
+      </p-dialog>
+
+      </div>
+    </div>
+  </form>
+</div>
