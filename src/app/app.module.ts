@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
 
 import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
@@ -28,16 +30,17 @@ import { CoreModule } from './core/core.module';
 import { AtivoService, AtivoFiltro } from './ativos/ativo.service';
 import { CategoriaService } from './ativos/categoria.service';
 import { AporteService } from './aportes/aporte.service';
+import { AportesGridComponent } from './aportes/aportes-grid/aportes-grid.component';
 
 
-
-
+registerLocaleData(localePt);
 @NgModule({
   declarations: [
     AppComponent,
     AtivoCadastroComponent,
     AtivosGridComponent,
-    AporteCadastroComponent
+    AporteCadastroComponent,
+    AportesGridComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -62,7 +65,14 @@ import { AporteService } from './aportes/aporte.service';
     DialogModule
 
   ],
-  providers: [AtivoService, CategoriaService, ConfirmationService, AtivoFiltro, AporteService],
+  providers: [
+    AtivoService,
+    CategoriaService,
+    ConfirmationService,
+    AtivoFiltro,
+    AporteService,
+    {provide: LOCALE_ID, useValue: 'pt-BR'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
