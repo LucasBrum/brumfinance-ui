@@ -24,14 +24,6 @@ export class AportesGridComponent implements OnInit {
 
   ngOnInit(): void {
     this.listar();
-    this.colunas = [
-      {field: 'dataCompra', header: 'Data'},
-      {field: 'ativoFinanceiro.codigo', header: 'Ativo'},
-      {field: 'ativoFinanceiro.categoriaAtivo.nome', header: 'Categoria'},
-      {field: 'quantidade', header: 'Quantidade'},
-      {field: 'custo', header: 'Preço de Compra'},
-      {field: 'valorTotal', header: 'Valor Total'}
-    ];
   }
 
   listar(pagina = 0) {
@@ -40,11 +32,7 @@ export class AportesGridComponent implements OnInit {
       .then(resultado => {
         this.totalRegistros = resultado.total;
         this.aportes = resultado.aportes;
-
-        console.log(this.aportes);
-
       });
   }
-
 
 }

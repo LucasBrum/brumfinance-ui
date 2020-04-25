@@ -1,18 +1,40 @@
 <div class="container">
   <div class="ui-g">
     <div class="ui-g-12 ui-md-12 ui-fluid">
-      <p-table [columns]="colunas" [value]="aportes">
-        <ng-template pTemplate="header" let-columns>
+      <p-table [value]="aportes">
+        <ng-template pTemplate="header">
           <tr>
-            <th *ngFor="let col of columns" [pSortableColumn]="col.field">
-              {{col.header}}
-              <p-sortIcon [field]="col.field" ariaLabel="Activate to sort"
-                ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order">
-              </p-sortIcon>
+            <th scope="col" [pSortableColumn]="'dataCompra'" id="th-data-compra">Data do Aporte
+              <p-sortIcon [field]="'dataCompra'" ariaLabel="ordenar" ariaLabelDesc="ordem decrescente"
+                ariaLabelAsc="ordem crescente"></p-sortIcon>
             </th>
+
+            <th scope="col">Ativo</th>
+
+            <th scope="col" [pSortableColumn]="'ativoFinanceiro.categoriaAtivo.nome'">Categoria
+              <p-sortIcon [field]="'ativoFinanceiro.categoriaAtivo.nome'" ariaLabel="ordenar"
+                ariaLabelDesc="ordem decrescente" ariaLabelAsc="ordem crescente"></p-sortIcon>
+            </th>
+
+            <th scope="col" [pSortableColumn]="'quantidade'">Quantidade
+              <p-sortIcon [field]="'quantidade'" ariaLabel="ordenar" ariaLabelDesc="ordem decrescente"
+                ariaLabelAsc="ordem crescente"></p-sortIcon>
+            </th>
+
+            <th scope="col" [pSortableColumn]="'custo'">Preço de Compra
+              <p-sortIcon [field]="'custo'" ariaLabel="ordenar" ariaLabelDesc="ordem decrescente"
+                ariaLabelAsc="ordem crescente"></p-sortIcon>
+            </th>
+
+            <th scope="col" [pSortableColumn]="'valorTotal'">Valor Total
+              <p-sortIcon [field]="'valorTotal'" ariaLabel="ordenar" ariaLabelDesc="ordem decrescente"
+                ariaLabelAsc="ordem crescente"></p-sortIcon>
+            </th>
+
             <th style="width: 7em">
               Ações
             </th>
+
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-aporte let-columns="columns">

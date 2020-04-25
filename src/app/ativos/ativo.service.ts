@@ -2,7 +2,6 @@ import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Ativo } from '../core/model';
-import { Header } from 'primeng/api/shared';
 
 export class AtivoFiltro {
   codigo: string;
@@ -47,9 +46,15 @@ export class AtivoService {
 
   }
 
-   excluir(id: number): Promise<void> {
+  excluir(id: number): Promise<void> {
      return this.http.delete(`${this.API}/ativos/${id}`)
       .toPromise()
       .then(() => null);
    }
+
+  listarAtivosSelect(): Promise<any> {
+    return this.http.get(`${this.API}/ativos/listar`)
+      .toPromise()
+      .then(response => response);
+  }
 }

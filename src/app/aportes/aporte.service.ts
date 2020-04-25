@@ -1,6 +1,7 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
+import { Aporte } from '../core/model';
 
 export class AporteFiltro {
   codigo: string;
@@ -27,12 +28,22 @@ export class AporteService {
     return this.http.get(`${this.API}/aportes`, {params})
       .toPromise()
       .then(response => {
-        const aportes = response['content']
+        const aportes = response['content'];
         const resultado = {
           aportes,
           total: response['totalElements']
         };
         return resultado;
       });
+  }
+
+  adicionar(aporte: Aporte): Promise<Aporte> {
+    const headers = new HttpHeaders();
+    headers.append('content-type', 'application/json');
+
+    console.log(aporte.dataCompra);
+
+    return this.http.post<Aporte>(`${this.API}/aportes`, aporte, {headers})
+      .toPromise();
   }
 }

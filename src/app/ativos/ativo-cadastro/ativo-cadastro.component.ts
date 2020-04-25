@@ -1,5 +1,5 @@
 import { AtivoService } from './../ativo.service';
-import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { Ativo, Categoria } from './../../core/model';
 import { FormControl } from '@angular/forms';
@@ -16,19 +16,18 @@ type ativo = Ativo;
 })
 export class AtivoCadastroComponent implements OnInit {
 
+  @Output() cadastroEfetuado = new EventEmitter<Ativo>();
+
+  ativo = new Ativo();
+  categorias = new Categoria();
+  displayModal = false;
+
   constructor(
     private categoriaService: CategoriaService,
     private ativoService: AtivoService,
     private toasty: ToastyService,
     private errorHandlerService: ErrorHandlerService,
   ) { }
-
-  ativo = new Ativo();
-  categorias = new Categoria();
-
-  displayModal = false;
-
-  @Output() cadastroEfetuado = new EventEmitter<Ativo>();
 
   ngOnInit(): void {
     this.carregarCategorias();
@@ -51,14 +50,18 @@ export class AtivoCadastroComponent implements OnInit {
   carregarCategorias() {
     return this.categoriaService.listar()
       .then(categorias => {
-        this.categorias = categorias
-          .map(c => ({ label: c.nome, value: c.id }));
+        this.categorias = categorias.map(c => ({ label: c.nome, value: c.id }));
       })
       .catch(erro => this.errorHandlerService.handle(erro));
   }
 
   showModalDialog() {
     this.displayModal = true;
+  }
+
+  cancelar($event) {
+    $event.preventDefault();
+    this.displayModal = false;
   }
 
 }

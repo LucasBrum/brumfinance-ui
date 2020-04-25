@@ -20,6 +20,7 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
 import {CalendarModule} from 'primeng/calendar';
 import {SpinnerModule} from 'primeng/spinner';
+import { CurrencyMaskModule } from "ng2-currency-mask";
 
 import { AppComponent } from './app.component';
 import { AtivoCadastroComponent } from './ativos/ativo-cadastro/ativo-cadastro.component';
@@ -52,6 +53,7 @@ registerLocaleData(localePt);
     CalendarModule,
     SpinnerModule,
     InputMaskModule,
+    CurrencyMaskModule,
 
     CoreModule,
 

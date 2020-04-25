@@ -4,8 +4,8 @@
 <app-ativos-grid #ativosGrid></app-ativos-grid>
 -->
 <app-navbar></app-navbar>
-<app-aporte-cadastro></app-aporte-cadastro>
-<app-aportes-grid></app-aportes-grid>
+<app-aporte-cadastro (cadastroEfetuado)="aportesGrid.listar()"></app-aporte-cadastro>
+<app-aportes-grid #aportesGrid></app-aportes-grid>
 
 <ng2-toasty></ng2-toasty>
 <p-confirmDialog header="Confirmação" icon="pi pi-exclamation-triangle" #confirmacao>
