@@ -43,6 +43,7 @@ export class AporteCadastroComponent implements OnInit {
         this.aporte = new Aporte();
         this.displayModal = false;
         this.cadastroEfetuado.emit(response);
+        console.log(this.aporte);
 
       })
       .catch(erro => this.errorHandlerService.handle(erro));
