@@ -1,7 +1,7 @@
 <div class="container">
     <div class="ui-g">
         <div class="ui-g-12 ui-md-12 ui-fluid">
-            <p-table [value]="aportes">
+            <p-table [value]="aportes" #tabela>
                 <ng-template pTemplate="header">
                     <tr>
                         <th scope="col" [pSortableColumn]="'dataCompra'" id="th-data-compra">Data do Aporte
@@ -43,11 +43,14 @@
 
                         <td>
                             <button class="btn-edit" pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top">
-              </button>
+                            </button>
                             <button class="btn-delete ui-button-danger" pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top" (click)="confirmarExclusao(aporte)">
-              </button>
+                            </button>
                         </td>
                     </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                    Nenhum Aporte encontrado.
                 </ng-template>
             </p-table>
         </div>

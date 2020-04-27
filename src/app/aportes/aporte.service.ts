@@ -46,4 +46,10 @@ export class AporteService {
     return this.http.post<Aporte>(`${this.API}/aportes`, aporte, {headers})
       .toPromise();
   }
+
+  excluir(id: number): Promise<any> {
+    return this.http.delete(`${this.API}/aportes/${id}`)
+      .toPromise()
+      .then(() => null);
+  }
 }

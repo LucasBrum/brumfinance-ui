@@ -1,8 +1,9 @@
 import { ToastyService } from 'ng2-toasty';
 import { ConfirmationService } from 'primeng/api';
 import { AporteService } from './../aporte.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AporteFiltro } from '../aporte.service';
+import { Table } from 'primeng/table/table';
 
 @Component({
   selector: 'app-aportes-grid',
@@ -15,6 +16,8 @@ export class AportesGridComponent implements OnInit {
   totalRegistros = 0;
   aportes = [];
   colunas: any[];
+
+  @ViewChild('tabelaAporte', {static: true}) grid: Table;
 
   constructor(
     private aporteService: AporteService,
@@ -32,6 +35,24 @@ export class AportesGridComponent implements OnInit {
       .then(resultado => {
         this.totalRegistros = resultado.total;
         this.aportes = resultado.aportes;
+      });
+  }
+
+  confirmarExclusao(aporte: any) {
+    this.confirmationService.confirm({
+      message: 'Tem certeza que deseja excluir?',
+      accept: () => {
+        this.excluir(aporte);
+      }
+    });
+  }
+
+  excluir(aporte: any) {
+    this.aporteService.excluir(aporte.id)
+      .then(() => {
+        this.grid.reset();
+
+        this.toastyService.success('Aporte excluído com sucesso.');
       });
   }
 
