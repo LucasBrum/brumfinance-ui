@@ -6,7 +6,7 @@ import { Aporte } from '../core/model';
 export class AporteFiltro {
   codigo: string;
   pagina = 0;
-  itensPorPagina = 10;
+  itensPorPagina = 20;
 }
 
 @Injectable({
@@ -32,6 +32,7 @@ export class AporteService {
         const resultado = {
           aportes,
           total: response['totalElements']
+
         };
         return resultado;
       });
@@ -47,7 +48,7 @@ export class AporteService {
       .toPromise();
   }
 
-  excluir(id: number): Promise<any> {
+  excluir(id: number): Promise<void> {
     return this.http.delete(`${this.API}/aportes/${id}`)
       .toPromise()
       .then(() => null);

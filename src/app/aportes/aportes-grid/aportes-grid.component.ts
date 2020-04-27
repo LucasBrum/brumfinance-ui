@@ -1,5 +1,5 @@
 import { ToastyService } from 'ng2-toasty';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, LazyLoadEvent } from 'primeng/api';
 import { AporteService } from './../aporte.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AporteFiltro } from '../aporte.service';
@@ -12,12 +12,13 @@ import { Table } from 'primeng/table/table';
 })
 export class AportesGridComponent implements OnInit {
 
+  loading: boolean;
   filtro = new AporteFiltro();
   totalRegistros = 0;
   aportes = [];
   colunas: any[];
 
-  @ViewChild('tabelaAporte', {static: true}) grid: Table;
+  @ViewChild('tabela', {static: true}) grid: Table;
 
   constructor(
     private aporteService: AporteService,
@@ -27,15 +28,33 @@ export class AportesGridComponent implements OnInit {
 
   ngOnInit(): void {
     this.listar();
+
+    this.colunas = [
+      {field: 'dataCompra', header: 'Data'},
+      {field: 'ativoFinanceiro.codigo', header: 'Ativo'},
+      {field: 'ativoFinanceiro.categoriaAtivo.nome', header: 'Categoria'},
+      {field: 'quantidade', header: 'Quantidade'},
+      {field: 'custo', header: 'Preço de Compra'},
+      {field: 'valorTotal', header: 'Valor Total'}
+    ];
   }
 
+
   listar(pagina = 0) {
+    this.loading = true;
     this.filtro.pagina = pagina;
     this.aporteService.listar(this.filtro)
       .then(resultado => {
         this.totalRegistros = resultado.total;
         this.aportes = resultado.aportes;
+        this.loading = false;
       });
+  }
+
+  aoMudarPagina(event: LazyLoadEvent) {
+    console.log(event);
+    const pagina = event.first / event.rows;
+    this.listar(pagina);
   }
 
   confirmarExclusao(aporte: any) {
