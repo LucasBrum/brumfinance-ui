@@ -20,7 +20,7 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
 import {CalendarModule} from 'primeng/calendar';
 import {SpinnerModule} from 'primeng/spinner';
-import { CurrencyMaskModule } from "ng2-currency-mask";
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 import { AppComponent } from './app.component';
 import { AtivoCadastroComponent } from './ativos/ativo-cadastro/ativo-cadastro.component';
@@ -32,6 +32,8 @@ import { AtivoService, AtivoFiltro } from './ativos/ativo.service';
 import { CategoriaService } from './ativos/categoria.service';
 import { AporteService } from './aportes/aporte.service';
 import { AportesGridComponent } from './aportes/aportes-grid/aportes-grid.component';
+import { VendaCadastroComponent } from './vendas/venda-cadastro/venda-cadastro.component';
+import { VendasGridComponent } from './vendas/vendas-grid/vendas-grid.component';
 
 
 registerLocaleData(localePt);
@@ -41,7 +43,9 @@ registerLocaleData(localePt);
     AtivoCadastroComponent,
     AtivosGridComponent,
     AporteCadastroComponent,
-    AportesGridComponent
+    AportesGridComponent,
+    VendaCadastroComponent,
+    VendasGridComponent
   ],
   imports: [
     BrowserAnimationsModule,
