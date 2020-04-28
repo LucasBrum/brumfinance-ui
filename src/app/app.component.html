@@ -7,8 +7,8 @@
 
 -->
 <app-navbar></app-navbar>
-<app-venda-cadastro></app-venda-cadastro>
-<app-vendas-grid></app-vendas-grid>
+<app-venda-cadastro (cadastroEfetuado)="vendasGrid.listar()"></app-venda-cadastro>
+<app-vendas-grid #vendasGrid></app-vendas-grid>
 
 <ng2-toasty></ng2-toasty>
 <p-confirmDialog header="Confirmação" icon="pi pi-exclamation-triangle" #confirmacao>

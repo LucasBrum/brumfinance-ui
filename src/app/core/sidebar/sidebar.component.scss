@@ -9,7 +9,11 @@
 ::ng-deep .pi-money-bill:before {
   content: "\e974";
   font-size: 30px;
+}
 
+::ng-deep .pi-ticket:before {
+  content: "\e974";
+  font-size: 30px;
 }
 
 ::ng-deep .pi-chart-line:before {

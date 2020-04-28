@@ -15,6 +15,7 @@ export class SideBarComponent implements OnInit{
       this.items = [
           {label: 'Ativos', icon: 'pi pi-money-bill'},
           {label: 'Aportes', icon: 'pi pi-chart-line'},
+          {label: 'Vendas', icon: 'pi pi-ticket'},
           {label: 'Minhas Finanças', icon: 'pi pi-home'},
           {label: 'Dívidas', icon: 'pi pi-fw pi-minus-circle'}
       ];

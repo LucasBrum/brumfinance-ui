@@ -42,8 +42,6 @@ export class AporteService {
     const headers = new HttpHeaders();
     headers.append('content-type', 'application/json');
 
-    console.log(aporte.dataCompra);
-
     return this.http.post<Aporte>(`${this.API}/aportes`, aporte, {headers})
       .toPromise();
   }

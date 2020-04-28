@@ -31,6 +31,7 @@ import { CoreModule } from './core/core.module';
 import { AtivoService, AtivoFiltro } from './ativos/ativo.service';
 import { CategoriaService } from './ativos/categoria.service';
 import { AporteService } from './aportes/aporte.service';
+import { VendaService } from './vendas/venda.service';
 import { AportesGridComponent } from './aportes/aportes-grid/aportes-grid.component';
 import { VendaCadastroComponent } from './vendas/venda-cadastro/venda-cadastro.component';
 import { VendasGridComponent } from './vendas/vendas-grid/vendas-grid.component';
@@ -77,6 +78,7 @@ registerLocaleData(localePt);
     ConfirmationService,
     AtivoFiltro,
     AporteService,
+    VendaService,
     {provide: LOCALE_ID, useValue: 'pt-BR'}
   ],
   bootstrap: [AppComponent]

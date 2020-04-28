@@ -19,3 +19,13 @@ export class Aporte {
   valorTotal: number;
 }
 
+export class Venda {
+  id: number;
+  dataVenda: Date;
+  ativo: string;
+  quantidade: number;
+  precoCompra: number;
+  precoVenda: number;
+  porcentagem: number;
+  lucro: number;
+}
