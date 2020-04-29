@@ -34,6 +34,7 @@ export class AporteService {
           total: response['totalElements']
 
         };
+
         return resultado;
       });
   }
