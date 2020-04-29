@@ -24,12 +24,12 @@
                             </a>
                         </td>
 
-                        <td style="text-align: center;">{{ativo.codigo}}</td>
-                        <td style="text-align: center;">{{ativo.quantidade}}</td>
+                        <td style="text-align: center;" [ngStyle]="{'font-weight': 'bold'}">{{ativo.codigo}}</td>
+                        <td style="text-align: center;">{{ativo.quantidade === null ? '0' : ativo.quantidade}}</td>
                         <td style="text-align: center;">{{ativo.precoAtual === null ? '0,00' : ativo.precoAtual}}</td>
-                        <td style="text-align: center;">{{ativo.totalDinheiro === null ? '0,00' : ativo.totalDinheiro}}</td>
+                        <td style="text-align: center;" [ngStyle]="{ color: ativo.totalDinheiro === null ? 'black' : 'green'}">{{ativo.totalDinheiro === null ? '0,00' : ativo.totalDinheiro | currency: 'R$'}}</td>
                         <td style="text-align: center;">{{ativo.totalPorcentagem === null ? '0,00' : ativo.totalPorcentagem}}</td>
-                        <td style="text-align: center;">{{ativo.dataAtualizacao === null ? '---' : ativo.dataAtualizacao}}</td>
+                        <td style="text-align: center;">{{ativo.dataAtualizacao === null ? '---' : ativo.dataAtualizacao | currency: 'R$'}}</td>
 
                         <td>
                             <button class="btn-edit" pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top">

@@ -31,7 +31,7 @@
                 <ng-template pTemplate="body" let-aporte let-columns="columns">
                     <tr>
                         <td style="text-align: center;">{{aporte.dataCompra | date:'dd/MM/yyyy'}}</td>
-                        <td style="text-align: center;">{{aporte.ativoFinanceiro.codigo}}</td>
+                        <td style="text-align: center;" [ngStyle]="{'font-weight': 'bold'}">{{aporte.ativoFinanceiro.codigo}}</td>
                         <td style="text-align: center;">{{aporte.ativoFinanceiro.categoriaAtivo.nome}}</td>
                         <td style="text-align: center;">{{aporte.quantidade}}</td>
                         <td style="text-align: center;">{{aporte.custo | currency: 'R$' }}</td>

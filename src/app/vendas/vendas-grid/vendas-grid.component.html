@@ -15,12 +15,12 @@
         <ng-template pTemplate="body" let-venda let-columns="columns">
           <tr>
             <td style="text-align: center;">{{venda.dataVenda | date:'dd/MM/yyyy'}}</td>
-            <td style="text-align: center;">{{venda.ativo}}</td>
+            <td style="text-align: center;" [ngStyle]="{'font-weight': 'bold'}">{{venda.ativo}}</td>
             <td style="text-align: center;">{{venda.quantidade}}</td>
             <td style="text-align: center;">{{venda.precoCompra | currency: 'R$'}}</td>
             <td style="text-align: center;">{{venda.precoVenda | currency: 'R$' }}</td>
-            <td style="text-align: center;">{{venda.porcentagem + '%' }}</td>
-            <td style="text-align: center;">{{venda.lucro | currency: 'R$' }}</td>
+            <td style="text-align: center;" [ngStyle]="{ color: venda.porcentagem < 0 ? 'red' : 'blue'}">{{venda.porcentagem + '%' }}</td>
+            <td style="text-align: center;" [ngStyle]="{ color: venda.porcentagem < 0 ? 'red' : 'green'}">{{venda.lucro | currency: 'R$' }}</td>
 
           </tr>
         </ng-template>
