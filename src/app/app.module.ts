@@ -35,9 +35,16 @@ import { VendaService } from './vendas/venda.service';
 import { AportesGridComponent } from './aportes/aportes-grid/aportes-grid.component';
 import { VendaCadastroComponent } from './vendas/venda-cadastro/venda-cadastro.component';
 import { VendasGridComponent } from './vendas/vendas-grid/vendas-grid.component';
-
+import { Routes, RouterModule } from '@angular/router';
 
 registerLocaleData(localePt);
+
+const routes: Routes = [
+  {path: 'ativos', component: AtivoCadastroComponent},
+  {path: 'aportes', component: AporteCadastroComponent},
+  {path: 'vendas', component: VendaCadastroComponent}
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +66,7 @@ registerLocaleData(localePt);
     SpinnerModule,
     InputMaskModule,
     CurrencyMaskModule,
+    RouterModule.forRoot(routes),
 
     CoreModule,
 

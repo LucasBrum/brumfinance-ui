@@ -2,13 +2,14 @@
 <app-sidebar></app-sidebar>
 <app-venda-cadastro (cadastroEfetuado)="vendasGrid.listar()"></app-venda-cadastro>
 <app-vendas-grid #vendasGrid></app-vendas-grid>
+<app-aporte-cadastro (cadastroEfetuado)="aportesGrid.listar()"></app-aporte-cadastro>
+<app-aportes-grid #aportesGrid></app-aportes-grid>
 <app-ativo-cadastro (cadastroEfetuado)="ativosGrid.listar()"></app-ativo-cadastro>
 <app-ativos-grid #ativosGrid></app-ativos-grid>
 
 -->
 <app-navbar></app-navbar>
-<app-aporte-cadastro (cadastroEfetuado)="aportesGrid.listar()"></app-aporte-cadastro>
-<app-aportes-grid #aportesGrid></app-aportes-grid>
+<router-outlet></router-outlet>
 
 <ng2-toasty></ng2-toasty>
 <p-confirmDialog header="Confirmação" icon="pi pi-exclamation-triangle" #confirmacao>

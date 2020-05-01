@@ -10,6 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SideBarComponent } from './sidebar/sidebar.component';
 
 import { ErrorHandlerService } from './error-handler.service';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { ErrorHandlerService } from './error-handler.service';
     MenubarModule,
     ButtonModule,
     ToastyModule.forRoot(),
+    RouterModule
 
   ],
   exports: [
