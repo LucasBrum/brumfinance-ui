@@ -37,7 +37,6 @@ export class VendaCadastroComponent implements OnInit {
         this.venda = new Venda();
         this.displayModal = false;
         this.cadastroEfetuado.emit(response);
-        console.log(this.venda);
       })
       .catch(erro => this.errorHandlerService.handle(erro));
   }
