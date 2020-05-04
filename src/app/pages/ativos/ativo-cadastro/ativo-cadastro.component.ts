@@ -2,7 +2,7 @@ import { AtivosGridComponent } from './../ativos-grid/ativos-grid.component';
 import { AtivoService } from './../ativo.service';
 import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 
-import { Ativo, Categoria } from './../../core/model';
+import { Ativo, Categoria } from './../../../core/model';
 import { FormControl } from '@angular/forms';
 import { CategoriaService } from '../categoria.service';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';

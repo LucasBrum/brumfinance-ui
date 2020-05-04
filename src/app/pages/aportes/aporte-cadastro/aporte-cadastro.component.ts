@@ -1,11 +1,11 @@
 import { AporteService } from './../aporte.service';
 import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Ativo, Aporte } from 'src/app/core/model';
-import { CategoriaService } from 'src/app/ativos/categoria.service';
+import { CategoriaService } from 'src/app/pages/ativos/categoria.service';
 import { ToastyService } from 'ng2-toasty';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { FormControl } from '@angular/forms';
-import { AtivoService } from 'src/app/ativos/ativo.service';
+import { AtivoService } from 'src/app/pages/ativos/ativo.service';
 import { AportesGridComponent } from '../aportes-grid/aportes-grid.component';
 
 type aporte = Aporte;

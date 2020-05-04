@@ -23,18 +23,18 @@ import {SpinnerModule} from 'primeng/spinner';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 import { AppComponent } from './app.component';
-import { AtivoCadastroComponent } from './ativos/ativo-cadastro/ativo-cadastro.component';
-import { AtivosGridComponent } from './ativos/ativos-grid/ativos-grid.component';
-import { AporteCadastroComponent } from './aportes/aporte-cadastro/aporte-cadastro.component';
+import { AtivoCadastroComponent } from './pages/ativos/ativo-cadastro/ativo-cadastro.component';
+import { AtivosGridComponent } from './pages/ativos/ativos-grid/ativos-grid.component';
+import { AporteCadastroComponent } from './pages/aportes/aporte-cadastro/aporte-cadastro.component';
 import { CoreModule } from './core/core.module';
 
-import { AtivoService, AtivoFiltro } from './ativos/ativo.service';
-import { CategoriaService } from './ativos/categoria.service';
-import { AporteService } from './aportes/aporte.service';
-import { VendaService } from './vendas/venda.service';
-import { AportesGridComponent } from './aportes/aportes-grid/aportes-grid.component';
-import { VendaCadastroComponent } from './vendas/venda-cadastro/venda-cadastro.component';
-import { VendasGridComponent } from './vendas/vendas-grid/vendas-grid.component';
+import { AtivoService, AtivoFiltro } from './pages/ativos/ativo.service';
+import { CategoriaService } from './pages/ativos/categoria.service';
+import { AporteService } from './pages/aportes/aporte.service';
+import { VendaService } from './pages/vendas/venda.service';
+import { AportesGridComponent } from './pages/aportes/aportes-grid/aportes-grid.component';
+import { VendaCadastroComponent } from './pages/vendas/venda-cadastro/venda-cadastro.component';
+import { VendasGridComponent } from './pages/vendas/vendas-grid/vendas-grid.component';
 import { Routes, RouterModule } from '@angular/router';
 
 registerLocaleData(localePt);

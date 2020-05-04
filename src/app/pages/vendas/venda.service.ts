@@ -1,6 +1,6 @@
 import { HttpParams, HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Venda } from '../core/model';
+import { Venda } from '../../core/model';
 import { environment } from 'src/environments/environment';
 
 export class VendaFiltro {
