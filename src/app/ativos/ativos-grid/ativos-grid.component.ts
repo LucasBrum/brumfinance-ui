@@ -30,7 +30,7 @@ export class AtivosGridComponent implements OnInit {
   ativos = [];
   colunas: any[];
 
-  @ViewChild('tabela', {static: true}) grid: Table;
+  @ViewChild('ativosGrid', {static: true}) ativosGrid: Table;
 
   constructor(
     private ativoService: AtivoService,
@@ -75,10 +75,11 @@ export class AtivosGridComponent implements OnInit {
     });
   }
 
+
   excluir(ativo: any) {
     this.ativoService.excluir(ativo.id)
     .then(() => {
-      this.grid.reset();
+      this.ativosGrid.reset();
 
       this.toastyService.success('Ativo Financeiro excluído com sucesso.');
     });

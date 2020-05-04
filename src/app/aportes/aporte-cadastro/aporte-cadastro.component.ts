@@ -1,11 +1,12 @@
 import { AporteService } from './../aporte.service';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Ativo, Aporte } from 'src/app/core/model';
 import { CategoriaService } from 'src/app/ativos/categoria.service';
 import { ToastyService } from 'ng2-toasty';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { FormControl } from '@angular/forms';
 import { AtivoService } from 'src/app/ativos/ativo.service';
+import { AportesGridComponent } from '../aportes-grid/aportes-grid.component';
 
 type aporte = Aporte;
 
@@ -16,7 +17,7 @@ type aporte = Aporte;
 })
 export class AporteCadastroComponent implements OnInit {
 
-  @Output() cadastroEfetuado = new EventEmitter<Aporte>();
+  @ViewChild('aportesGrid') aportesGrid: AportesGridComponent;
 
   aporte = new Aporte();
   ativos = new Ativo();
@@ -42,7 +43,7 @@ export class AporteCadastroComponent implements OnInit {
         form.reset();
         this.aporte = new Aporte();
         this.displayModal = false;
-        this.cadastroEfetuado.emit(response);
+        this.aportesGrid.listar();
 
       })
       .catch(erro => this.errorHandlerService.handle(erro));

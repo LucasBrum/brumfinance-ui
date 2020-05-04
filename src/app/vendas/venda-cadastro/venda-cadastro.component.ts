@@ -1,9 +1,10 @@
 import { FormControl } from '@angular/forms';
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild } from '@angular/core';
 import { VendaService } from '../venda.service';
 import { ToastyService } from 'ng2-toasty';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { Venda } from 'src/app/core/model';
+import { VendasGridComponent } from '../vendas-grid/vendas-grid.component';
 
 type venda = Venda;
 
@@ -14,7 +15,8 @@ type venda = Venda;
 })
 export class VendaCadastroComponent implements OnInit {
 
-  @Output() cadastroEfetuado = new EventEmitter<Venda>();
+  //@Output() cadastroEfetuado = new EventEmitter<Venda>();
+  @ViewChild('vendasGrid') vendasGrid: VendasGridComponent;
 
   venda = new Venda();
   displayModal = false;
@@ -36,7 +38,7 @@ export class VendaCadastroComponent implements OnInit {
         form.reset();
         this.venda = new Venda();
         this.displayModal = false;
-        this.cadastroEfetuado.emit(response);
+        this.vendasGrid.listar();
       })
       .catch(erro => this.errorHandlerService.handle(erro));
   }

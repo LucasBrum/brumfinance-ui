@@ -6,7 +6,7 @@ import { Ativo } from '../core/model';
 export class AtivoFiltro {
   codigo: string;
   pagina = 0;
-  itensPorPagina = 20;
+  itensPorPagina = 100;
 }
 
 @Injectable({

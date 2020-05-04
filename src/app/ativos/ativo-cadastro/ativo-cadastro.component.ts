@@ -1,5 +1,6 @@
+import { AtivosGridComponent } from './../ativos-grid/ativos-grid.component';
 import { AtivoService } from './../ativo.service';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 
 import { Ativo, Categoria } from './../../core/model';
 import { FormControl } from '@angular/forms';
@@ -16,7 +17,7 @@ type ativo = Ativo;
 })
 export class AtivoCadastroComponent implements OnInit {
 
-  @Output() cadastroEfetuado = new EventEmitter<Ativo>();
+  @ViewChild('ativosGrid') ativosGrid: AtivosGridComponent;
 
   ativo = new Ativo();
   categorias = new Categoria();
@@ -41,7 +42,8 @@ export class AtivoCadastroComponent implements OnInit {
         form.reset();
         this.ativo = new Ativo();
         this.displayModal = false;
-        this.cadastroEfetuado.emit(response);
+        //this.cadastroEfetuado.emit(response);
+        this.ativosGrid.listar();
 
       })
       .catch(erro => this.errorHandlerService.handle(erro));

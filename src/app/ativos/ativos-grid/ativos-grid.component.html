@@ -1,7 +1,7 @@
 <div class="container">
     <div class="ui-g">
         <div class="ui-g-12 ui-md-12 ui-fluid">
-            <p-table [columns]="colunas" [value]="ativos" dataKey="codigo" [responsive]="true" (onLazyLoad)="aoMudarPagina($event)" #tabela>
+            <p-table [columns]="colunas" [value]="ativos" dataKey="codigo" [responsive]="true" (onLazyLoad)="aoMudarPagina($event)" #ativosGrid>
               <ng-template pTemplate="header" let-columns>
                 <tr>
                   <th style="width: 3em"></th>
