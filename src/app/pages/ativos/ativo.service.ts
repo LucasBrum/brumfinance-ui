@@ -2,11 +2,13 @@ import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Ativo } from '../../core/model';
+import { TmplAstRecursiveVisitor } from '@angular/compiler';
 
 export class AtivoFiltro {
   codigo: string;
   pagina = 0;
   itensPorPagina = 100;
+
 }
 
 @Injectable({
@@ -28,11 +30,14 @@ export class AtivoService {
     return this.http.get(`${this.API}/ativos`, {params})
       .toPromise()
       .then(response => {
+        let totalAplicacao
         const ativos = response['content'];
         const resultado = {
           ativos,
           total: response['totalElements']
         };
+
+
         return resultado;
       });
   }

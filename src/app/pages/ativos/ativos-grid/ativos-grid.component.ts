@@ -29,6 +29,7 @@ export class AtivosGridComponent implements OnInit {
   totalRegistros = 0;
   ativos = [];
   colunas: any[];
+  totalInvestido = 0;
 
   constructor(
     private ativoService: AtivoService,
@@ -56,6 +57,11 @@ export class AtivosGridComponent implements OnInit {
       .then(resultado => {
         this.totalRegistros = resultado.total;
         this.ativos = resultado.ativos;
+
+        this.ativos.forEach(ativo => {
+          this.totalInvestido = this.totalInvestido + ativo.totalDinheiro;
+        });
+        console.log('Total Investido: ', this.totalInvestido);
       });
   }
 
