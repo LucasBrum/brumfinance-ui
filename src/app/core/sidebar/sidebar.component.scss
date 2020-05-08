@@ -26,7 +26,12 @@
   font-size: 30px;
 }
 
-::ng-deep .pi-minus-circle:before {
+::ng-deep .pi-th-large:before  {
+  content: "\e918";
+  font-size: 30px;
+}
+
+::ng-deep .pi-minus-circle:bemenuitemfore {
   content: "\e910";
   font-size: 30px;
 }
