@@ -1,11 +1,17 @@
 .navbar {
   padding: 10px 0;
-  background-color: #007ad9;
+  background-color: #191919;
   padding-right: 250px;
 }
 
 ::ng-deep .pi-align-justify:before {
   content: "\e949";
-  font-size: 1.5em;
+  font-size: 1.0em;
+  background-color: #191919;
 
 }
+
+::ng-deep .ui-button-text .ui-clickable {
+  background-color: #191919;
+}
+

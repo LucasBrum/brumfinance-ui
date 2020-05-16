@@ -31,20 +31,24 @@
   font-size: 30px;
 }
 
-::ng-deep .pi-minus-circle:bemenuitemfore {
+::ng-deep .pi-minus-circle:before {
   content: "\e910";
   font-size: 30px;
 }
 
 ::ng-deep body .ui-menu {
   padding: 0;
-  background-color: #ffffff;
+  background-color: #333;
   border: 0px solid #c8c8c8;
 }
 
 ::ng-deep body .ui-menubar {
   padding: 0px;
-  background-color: #ffffff;
+  background-color: #333;
   border: 0px solid #c8c8c8;
 }
 
+.btn-menu {
+  background-color: #191919;
+  border: 0px solid #1f7ed0;
+}

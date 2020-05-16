@@ -9,8 +9,8 @@
 <div class="container">
   <div class="ui-g">
     <div class="ui-g-12 ui-md-12 ui-fluid">
-      <p-table [columns]="colunas" [value]="ativos" dataKey="codigo" [responsive]="true"
-        (onLazyLoad)="aoMudarPagina($event)" #ativosGrid>
+      <p-table [columns]="colunas" [value]="ativos" [loading]="loading" dataKey="codigo" [responsive]="true"
+         #ativosGrid>
         <ng-template pTemplate="header" let-columns>
           <tr>
             <th style="width: 3em"></th>
@@ -35,19 +35,21 @@
 
             <td style="text-align: center;" [ngStyle]="{'font-weight': 'bold'}">{{ativo.codigo}}</td>
             <td style="text-align: center;">{{ativo.quantidade === null ? '0' : ativo.quantidade}}</td>
-            <td style="text-align: center;">{{ativo.precoAtual === null ? '0,00' : ativo.precoAtual}}</td>
-            <td style="text-align: center;" [ngStyle]="{ color: ativo.totalDinheiro === null ? 'black' : 'green'}">
+            <td style="text-align: center;" [ngStyle]="{ color: 'Cyan'}">{{ativo.precoAtual === null ? '0,00' : ativo.precoAtual | currency: 'R$'}}</td>
+            <td style="text-align: center;" [ngStyle]="{ color: ativo.totalDinheiro === null ? 'white' : 'LawnGreen'}">
               {{ativo.totalDinheiro === null ? '0,00' : ativo.totalDinheiro | currency: 'R$'}}</td>
-            <td style="text-align: center;">{{ativo.totalPorcentagem === null ? '0,00' : ativo.totalPorcentagem}}</td>
+            <td style="text-align: center;"
+            [ngStyle]="{ color: ativo.totalPorcentagem < 0 ? 'OrangeRed' : 'Lime'}">{{ativo.totalPorcentagem === null ? '0,00' : ativo.totalPorcentagem}} %</td>
             <td style="text-align: center;">
               {{ativo.dataAtualizacao === null ? '---' : ativo.dataAtualizacao | currency: 'R$'}}</td>
 
             <td>
-              <button class="btn-edit" pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top">
-              </button>
-              <button class="btn-delete ui-button-danger" pButton icon="pi pi-trash" pTooltip="Excluir"
-                tooltipPosition="top" (click)="confirmarExclusao(ativo)">
-              </button>
+              <a class="btn-edit" pButton icon="pi pi-pencil" (click)="showModalDialog()" pTooltip="Editar" tooltipPosition="top"
+                [routerLInk]="['/ativos', ativo.id]">
+              </a>
+              <a class="btn-delete ui-button-danger" pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
+                (click)="confirmarExclusao(ativo)">
+              </a>
             </td>
           </tr>
         </ng-template>
@@ -73,7 +75,13 @@
           </tr>
         </ng-template>
         <ng-template pTemplate="emptymessage">
-          Nenhum Ativo Financeiro encontrado.
+          <tr class="inner-row">
+            <td colspan=8>
+              <div class="emptyMessage" *ngIf="!loading">
+                <span>Nenhum Ativo Financeiro encontrado.</span>
+              </div>
+            </td>
+          </tr>
         </ng-template>
       </p-table>
 

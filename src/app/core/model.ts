@@ -8,6 +8,7 @@ export class Ativo {
   codigo: string;
   descricao: string;
   categoriaAtivo = new Categoria();
+
 }
 
 export class Aporte {

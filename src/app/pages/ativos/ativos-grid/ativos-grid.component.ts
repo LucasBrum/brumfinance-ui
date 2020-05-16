@@ -25,11 +25,13 @@ import { Table } from 'primeng/table/table';
 })
 export class AtivosGridComponent implements OnInit {
 
+  loading: boolean;
   filtro = new AtivoFiltro();
   totalRegistros = 0;
   ativos = [];
   colunas: any[];
   totalInvestido = 0;
+  displayModal = false;
 
   constructor(
     private ativoService: AtivoService,
@@ -38,7 +40,11 @@ export class AtivosGridComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.listar();
+    this.loading = true;
+    setTimeout(() => {
+      this.listar();
+      this.loading = false;
+    }, 1000);
 
     this.colunas = [
 
@@ -51,23 +57,21 @@ export class AtivosGridComponent implements OnInit {
     ];
   }
 
-  listar(pagina = 0) {
-    this.filtro.pagina = pagina;
-    this.ativoService.listar(this.filtro)
+  listar() {
+    this.ativoService.listar()
       .then(resultado => {
-        this.totalRegistros = resultado.total;
         this.ativos = resultado.ativos;
 
         this.ativos.forEach(ativo => {
           this.totalInvestido = this.totalInvestido + ativo.totalDinheiro;
         });
         console.log('Total Investido: ', this.totalInvestido);
+
       });
   }
 
   aoMudarPagina(event: LazyLoadEvent) {
     const pagina = event.first / event.rows;
-    this.listar(pagina);
   }
 
   confirmarExclusao(ativo: any) {
@@ -88,4 +92,9 @@ export class AtivosGridComponent implements OnInit {
       this.toastyService.success('Ativo Financeiro excluído com sucesso.');
     });
    }
+
+   showModalDialog() {
+    this.displayModal = true;
+  }
+
 }

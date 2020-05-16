@@ -20,21 +20,16 @@ export class AtivoService {
 
   constructor(private http: HttpClient) { }
 
-  listar(filtro: AtivoFiltro): Promise<any> {
+  listar(): Promise<any> {
 
     let params = new HttpParams();
-
-    params = params.set('page', filtro.pagina.toString());
-    params = params.set('size', filtro.itensPorPagina.toString());
 
     return this.http.get(`${this.API}/ativos`, {params})
       .toPromise()
       .then(response => {
-        let totalAplicacao
-        const ativos = response['content'];
+        const ativos = response;
         const resultado = {
-          ativos,
-          total: response['totalElements']
+          ativos
         };
 
 
@@ -61,5 +56,25 @@ export class AtivoService {
     return this.http.get(`${this.API}/ativos/listar`)
       .toPromise()
       .then(response => response);
+  }
+
+  atualizar(ativo: Ativo): Promise<Ativo> {
+    return this.http.put(`${this.API}/ativos/${ativo.id}`, ativo)
+      .toPromise()
+      .then(response => {
+        const ativo = response as Ativo;
+
+        return ativo;
+      });
+  }
+
+  buscarPorCodigo(id: number): Promise<Ativo> {
+    return this.http.get(`${this.API}/${id}`)
+      .toPromise()
+      .then(response => {
+        const ativo = response as Ativo;
+
+        return ativo;
+      });
   }
 }

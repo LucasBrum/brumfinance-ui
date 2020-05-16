@@ -1,6 +1,6 @@
-<p-sidebar [visible]="true" [showCloseIcon]="false" [dismissible]="true" [baseZIndex]="10000">
+<p-sidebar [(visible)]="display" [baseZIndex]="10000">
   <h1 style="font-weight:normal">Brum Finance</h1>
   <p-menubar [model]="items" class="ui-sidebar-active" (click)="display = false"></p-menubar>
 </p-sidebar>
 
-<button pButton type="button" (click)="display = true" icon="pi pi-align-justify"></button>
+<button pButton type="button" class="btn-menu" (click)="display = true" icon="pi pi-align-justify"></button>
