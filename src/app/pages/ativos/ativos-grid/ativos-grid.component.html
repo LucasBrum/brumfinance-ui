@@ -1,90 +1,97 @@
-<div class="ui-g">
-  <div class="ui-g-12 ui-md-12 ui-fluid">
-    <p-fieldset legend="Resumo" [toggleable]="true" [collapsed]="true">
-      <img title="Valor Investido" src="../../../../assets/images/money-box.png" />
-      <p class="label-totalInvestido">{{totalInvestido | currency: 'R$'}}</p>
-    </p-fieldset>
-  </div>
+<div class="p-grid ui-g-12 ui-fluid">
+  <app-ativos-cards label="Total Investido" value="{{totalInvestido | currency: 'R$'}}" icon="pi pi-dollar"
+    colour="MediumSpringGreen" class="ui-g-12 ui-md-6 ui-lg-4">
+  </app-ativos-cards>
+
+  <app-ativos-cards label="Total de Ativos" value="{{quantidadeDeAtivos}}" icon="pi pi-plus-circle"
+    colour="Aqua" class="ui-g-12 ui-md-6 ui-lg-4 card-total-ativos">
+  </app-ativos-cards>
+
+  <app-ativos-cards label="Cotação Bovespa" value="{{indiceBovespa.pontos}}" icon="pi pi-shopping-cart"
+    colour="Plum" class="ui-g-12 ui-md-6 ui-lg-4">
+  </app-ativos-cards>
 </div>
-<div class="container">
-  <div class="ui-g">
-    <div class="ui-g-12 ui-md-12 ui-fluid">
-      <p-table [columns]="colunas" [value]="ativos" [loading]="loading" dataKey="codigo" [responsive]="true"
-         #ativosGrid>
-        <ng-template pTemplate="header" let-columns>
-          <tr>
-            <th style="width: 3em"></th>
-            <th *ngFor="let col of columns" [pSortableColumn]="col.field">
-              {{col.header}}
-              <p-sortIcon [field]="col.field" ariaLabel="Activate to sort"
-                ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order">
-              </p-sortIcon>
-            </th>
-            <th style="width: 7em">
-              Ações
-            </th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-ativo let-expanded="expanded" let-columns="columns">
-          <tr>
-            <td>
-              <a href="" [pRowToggler]="ativo">
-                <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
-              </a>
-            </td>
+<div class="p-grid ui-fluid">
+  <div class="ui-g-12 ui-md-6 ui-fluid">
+    <p-table [columns]="colunas" [value]="ativos" [loading]="loading" dataKey="codigo" [responsive]="true" #ativosGrid>
+      <ng-template pTemplate="caption">
+        Ativos Financeiros
+      </ng-template>
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th style="width: 3em"></th>
+          <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+            {{col.header}}
+            <p-sortIcon [field]="col.field" ariaLabel="Activate to sort"
+              ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order">
+            </p-sortIcon>
+          </th>
+          <th style="width: 7em">
+            Ações
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-ativo let-expanded="expanded" let-columns="columns">
+        <tr>
+          <td>
+            <a href="" [pRowToggler]="ativo">
+              <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+            </a>
+          </td>
 
-            <td style="text-align: center;" [ngStyle]="{'font-weight': 'bold'}">{{ativo.codigo}}</td>
-            <td style="text-align: center;">{{ativo.quantidade === null ? '0' : ativo.quantidade}}</td>
-            <td style="text-align: center;" [ngStyle]="{ color: 'Cyan'}">{{ativo.precoAtual === null ? '0,00' : ativo.precoAtual | currency: 'R$'}}</td>
-            <td style="text-align: center;" [ngStyle]="{ color: ativo.totalDinheiro === null ? 'white' : 'LawnGreen'}">
-              {{ativo.totalDinheiro === null ? '0,00' : ativo.totalDinheiro | currency: 'R$'}}</td>
-            <td style="text-align: center;"
-            [ngStyle]="{ color: ativo.totalPorcentagem < 0 ? 'OrangeRed' : 'Lime'}">{{ativo.totalPorcentagem === null ? '0,00' : ativo.totalPorcentagem}} %</td>
-            <td style="text-align: center;">
-              {{ativo.dataAtualizacao === null ? '---' : ativo.dataAtualizacao | currency: 'R$'}}</td>
+          <td style="text-align: center;" [ngStyle]="{'font-weight': 'bold'}">{{ativo.codigo}}</td>
+          <td style="text-align: center;">{{ativo.quantidade === null ? '0' : ativo.quantidade}}</td>
+          <td style="text-align: center;" [ngStyle]="{ color: 'Cyan'}">
+            {{ativo.precoAtual === null ? '0,00' : ativo.precoAtual | currency: 'R$'}}</td>
+          <td style="text-align: center;" [ngStyle]="{ color: ativo.totalDinheiro === null ? 'white' : 'LawnGreen'}">
+            {{ativo.totalDinheiro === null ? '0,00' : ativo.totalDinheiro | currency: 'R$'}}</td>
+          <td style="text-align: center;" [ngStyle]="{ color: ativo.totalPorcentagem < 0 ? 'Tomato' : 'Lime'}">
+            {{ativo.totalPorcentagem === null ? '0.0' : ativo.totalPorcentagem}}%</td>
+          <td style="text-align: center;">
+            {{ativo.dataAtualizacao === null ? '---' : ativo.dataAtualizacao | currency: 'R$'}}</td>
 
-            <td>
-              <a class="btn-edit" pButton icon="pi pi-pencil" (click)="showModalDialog()" pTooltip="Editar" tooltipPosition="top"
-                [routerLInk]="['/ativos', ativo.id]">
-              </a>
-              <a class="btn-delete ui-button-danger" pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
-                (click)="confirmarExclusao(ativo)">
-              </a>
-            </td>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="rowexpansion" let-ativo let-columns="columns">
-          <tr>
-            <td [attr.colspan]="columns.length + 1">
-              <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
-                <div class="ui-g-12 ui-md-12">
-                  <div class="ui-g">
-                    <div class="ui-g-12">
-                      <b>Descrição:</b> {{ativo.descricao}}
-                    </div>
-                    <div class="ui-g-12">
-                      <b>Categoria:</b> {{ativo.categoriaAtivo.nome}}
-                    </div>
-                    <div class="ui-g-12">
-                      <b>Tipo:</b> {{ativo.categoriaAtivo.tipo}}
-                    </div>
+          <td>
+            <a class="btn-edit" pButton icon="pi pi-pencil" (click)="editar(ativo)" pTooltip="Editar"
+              tooltipPosition="top" [routerLInk]="['/ativos', ativo.id]">
+            </a>
+            <a class="btn-delete ui-button-danger" pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
+              (click)="confirmarExclusao(ativo)">
+            </a>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="rowexpansion" let-ativo let-columns="columns">
+        <tr>
+          <td [attr.colspan]="columns.length + 2">
+            <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
+              <div class="ui-g-12 ui-md-12">
+                <div class="ui-g">
+                  <div class="ui-g-12">
+                    <b>Descrição:</b> {{ativo.descricao}}
+                  </div>
+                  <div class="ui-g-12">
+                    <b>Categoria:</b> {{ativo.categoriaAtivo.nome}}
+                  </div>
+                  <div class="ui-g-12">
+                    <b>Tipo:</b> {{ativo.categoriaAtivo.tipo}}
                   </div>
                 </div>
               </div>
-            </td>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="emptymessage">
-          <tr class="inner-row">
-            <td colspan=8>
-              <div class="emptyMessage" *ngIf="!loading">
-                <span>Nenhum Ativo Financeiro encontrado.</span>
-              </div>
-            </td>
-          </tr>
-        </ng-template>
-      </p-table>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr class="inner-row">
+          <td colspan=8>
+            <div class="emptyMessage" *ngIf="!loading">
+              <span>Nenhum Ativo Financeiro encontrado.</span>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
 
-    </div>
   </div>
+
 </div>

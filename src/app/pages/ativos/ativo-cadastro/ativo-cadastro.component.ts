@@ -55,7 +55,7 @@ export class AtivoCadastroComponent implements OnInit {
 
   salvar(form: FormControl) {
     if(this.editando) {
-      this.atualizarAtivo(form);
+      this.atualizarAtivo(this.ativo);
     } else {
       this.adicionarAtivo(form);
     }
@@ -75,10 +75,11 @@ export class AtivoCadastroComponent implements OnInit {
       .catch(erro => this.errorHandlerService.handle(erro));
   }
 
-  atualizarAtivo(form: FormControl) {
+  atualizarAtivo(ativo: Ativo) {
     this.ativoService.atualizar(this.ativo)
       .then(ativo => {
         this.ativo = ativo;
+        this.displayModal = false;
 
         this.toasty.success('Ativo atualizado com sucesso.');
       });

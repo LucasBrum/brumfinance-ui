@@ -1,3 +1,5 @@
+import { AtivoCadastroComponent } from './../ativo-cadastro/ativo-cadastro.component';
+import { IndiceBovespa, Ativo } from './../../../core/model';
 import { ToastyService } from 'ng2-toasty';
 import { ConfirmationService, LazyLoadEvent } from 'primeng/api';
 import { AtivoService, AtivoFiltro } from './../ativo.service';
@@ -25,16 +27,20 @@ import { Table } from 'primeng/table/table';
 })
 export class AtivosGridComponent implements OnInit {
 
-  loading: boolean;
   filtro = new AtivoFiltro();
+  indiceBovespa = new IndiceBovespa();
+
+  loading: boolean;
   totalRegistros = 0;
   ativos = [];
   colunas: any[];
   totalInvestido = 0;
   displayModal = false;
+  quantidadeDeAtivos = 0;
 
   constructor(
     private ativoService: AtivoService,
+    private ativoCadastroComponent: AtivoCadastroComponent,
     private confirmationService: ConfirmationService,
     private toastyService: ToastyService
   ) {}
@@ -43,7 +49,6 @@ export class AtivosGridComponent implements OnInit {
     this.loading = true;
     setTimeout(() => {
       this.listar();
-      this.loading = false;
     }, 1000);
 
     this.colunas = [
@@ -55,6 +60,7 @@ export class AtivosGridComponent implements OnInit {
       { field: 'totalPorcentagem', header: 'Ganho/Perda'},
       { field: 'dataAtualizacao', header: 'Últ. atualização'}
     ];
+    this.buscarCotacaoIbovespa(this.indiceBovespa);
   }
 
   listar() {
@@ -64,9 +70,9 @@ export class AtivosGridComponent implements OnInit {
 
         this.ativos.forEach(ativo => {
           this.totalInvestido = this.totalInvestido + ativo.totalDinheiro;
+          this.quantidadeDeAtivos = this.quantidadeDeAtivos + ativo.quantidade;
         });
-        console.log('Total Investido: ', this.totalInvestido);
-
+        this.loading = false;
       });
   }
 
@@ -83,7 +89,6 @@ export class AtivosGridComponent implements OnInit {
     });
   }
 
-
   excluir(ativo: any) {
     this.ativoService.excluir(ativo.id)
     .then(() => {
@@ -93,8 +98,17 @@ export class AtivosGridComponent implements OnInit {
     });
    }
 
-   showModalDialog() {
-    this.displayModal = true;
+  buscarCotacaoIbovespa(indiceIbovespa: IndiceBovespa) {
+    this.ativoService.buscaCotacaoIbovespa()
+      .then(indiceIbovespa => {
+        this.indiceBovespa = indiceIbovespa;
+      });
   }
+
+  editar(ativo: Ativo) {
+    console.log('ativo', ativo);
+    this.ativoCadastroComponent.atualizarAtivo(ativo);
+
+    }
 
 }

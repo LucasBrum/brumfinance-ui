@@ -1,3 +1,4 @@
+import { IndiceBovespa } from './../../core/model';
 import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
@@ -75,6 +76,15 @@ export class AtivoService {
         const ativo = response as Ativo;
 
         return ativo;
+      });
+  }
+
+  buscaCotacaoIbovespa(): Promise<IndiceBovespa> {
+    return this.http.get(`${this.API}/ativos/cotacao/ibovespa`)
+      .toPromise()
+      .then(response => {
+        const indiceBovespa = response as IndiceBovespa;
+        return indiceBovespa;
       });
   }
 }

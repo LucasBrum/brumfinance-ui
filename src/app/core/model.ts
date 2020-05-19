@@ -30,3 +30,10 @@ export class Venda {
   porcentagem: number;
   lucro: number;
 }
+
+export class IndiceBovespa {
+  pontos: string;
+  variacaoDia: string;
+  minDia: string;
+  maxDia: string;
+}
