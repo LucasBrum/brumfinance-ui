@@ -40,6 +40,7 @@ import { VendaCadastroComponent } from './pages/vendas/venda-cadastro/venda-cada
 import { VendasGridComponent } from './pages/vendas/vendas-grid/vendas-grid.component';
 import { Routes, RouterModule } from '@angular/router';
 import { AtivosCardsComponent } from './pages/ativos/ativos-cards/ativos-cards.component';
+import { AportesModule } from './pages/aportes/aportes.module';
 
 registerLocaleData(localePt);
 
@@ -61,27 +62,32 @@ const routes: Routes = [
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
-    ButtonModule,
+
     FormsModule,
+
     ToolbarModule,
+    ButtonModule,
     ConfirmDialogModule,
+    DialogModule,
     CalendarModule,
     SpinnerModule,
     InputMaskModule,
     CurrencyMaskModule,
+    TableModule,
+    TooltipModule,
+    DropdownModule,
+    InputTextModule,
+    FieldsetModule,
+
+
     RouterModule.forRoot(routes),
 
     CoreModule,
     AtivosModule,
+    AportesModule,
 
-    InputTextModule,
-    InputTextareaModule,
-    FieldsetModule,
     HttpClientModule,
-    TableModule,
-    TooltipModule,
-    DropdownModule,
-    DialogModule,
+
     AppRoutingModule
 
   ],
