@@ -5,7 +5,6 @@ import { ConfirmationService, LazyLoadEvent } from 'primeng/api';
 import { AtivoService, AtivoFiltro } from './../ativo.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { Table } from 'primeng/table/table';
 
 @Component({
   selector: 'app-ativos-grid',

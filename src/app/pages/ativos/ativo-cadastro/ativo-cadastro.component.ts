@@ -1,13 +1,14 @@
-import { AtivosGridComponent } from './../ativos-grid/ativos-grid.component';
-import { AtivoService } from './../ativo.service';
+import { FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 
-import { Ativo, Categoria } from './../../../core/model';
-import { FormControl } from '@angular/forms';
-import { CategoriaService } from '../categoria.service';
-import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { ToastyService } from 'ng2-toasty';
-import { ActivatedRoute } from '@angular/router';
+
+import { AtivoService } from './../ativo.service';
+import { CategoriaService } from '../categoria.service';
+import { Ativo, Categoria } from './../../../core/model';
+import { ErrorHandlerService } from 'src/app/core/error-handler.service';
+import { AtivosGridComponent } from './../ativos-grid/ativos-grid.component';
 
 type ativo = Ativo;
 

@@ -1,3 +1,4 @@
+import { AtivosModule } from './pages/ativos/ativos.module';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -52,13 +53,10 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    AtivoCadastroComponent,
-    AtivosGridComponent,
     AporteCadastroComponent,
     AportesGridComponent,
     VendaCadastroComponent,
-    VendasGridComponent,
-    AtivosCardsComponent
+    VendasGridComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -72,9 +70,9 @@ const routes: Routes = [
     InputMaskModule,
     CurrencyMaskModule,
     RouterModule.forRoot(routes),
-    FontAwesomeModule,
 
     CoreModule,
+    AtivosModule,
 
     InputTextModule,
     InputTextareaModule,
