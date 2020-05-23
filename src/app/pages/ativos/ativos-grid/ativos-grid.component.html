@@ -51,9 +51,9 @@
             {{ativo.dataAtualizacao === null ? '---' : ativo.dataAtualizacao | currency: 'R$'}}</td>
 
           <td>
-            <a class="btn-edit" pButton icon="pi pi-pencil" (click)="editar(ativo)" pTooltip="Editar"
-              tooltipPosition="top" [routerLInk]="['/ativos', ativo.id]">
-            </a>
+            <button class="btn-edit" pButton icon="pi pi-pencil" (click)="editar.emit(ativo.id)" pTooltip="Editar"
+              tooltipPosition="top" >
+            </button>
             <a class="btn-delete ui-button-danger" pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
               (click)="confirmarExclusao(ativo)">
             </a>

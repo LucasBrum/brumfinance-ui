@@ -6,8 +6,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 const routes: Routes = [
-  {path: 'ativos', component: AtivoCadastroComponent},
-  {path: 'ativos/:id', component: AtivoCadastroComponent},
   {path: 'aportes', component: AporteCadastroComponent},
   {path: 'vendas', component: VendaCadastroComponent}
 ];

@@ -3,7 +3,7 @@ import { IndiceBovespa, Ativo } from './../../../core/model';
 import { ToastyService } from 'ng2-toasty';
 import { ConfirmationService, LazyLoadEvent } from 'primeng/api';
 import { AtivoService, AtivoFiltro } from './../ativo.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
@@ -36,6 +36,8 @@ export class AtivosGridComponent implements OnInit {
   totalInvestido = 0;
   displayModal = false;
   quantidadeDeAtivos = 0;
+
+  @Output() editar: EventEmitter<number> = new EventEmitter();
 
   constructor(
     private ativoService: AtivoService,
@@ -103,11 +105,5 @@ export class AtivosGridComponent implements OnInit {
         this.indiceBovespa = indiceIbovespa;
       });
   }
-
-  editar(ativo: Ativo) {
-    console.log('ativo', ativo);
-    this.ativoCadastroComponent.atualizarAtivo(ativo);
-
-    }
 
 }

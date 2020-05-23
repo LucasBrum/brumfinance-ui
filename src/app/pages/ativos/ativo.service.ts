@@ -70,7 +70,7 @@ export class AtivoService {
   }
 
   buscarPorCodigo(id: number): Promise<Ativo> {
-    return this.http.get(`${this.API}/${id}`)
+    return this.http.get(`${this.API}/ativos/${id}`)
       .toPromise()
       .then(response => {
         const ativo = response as Ativo;

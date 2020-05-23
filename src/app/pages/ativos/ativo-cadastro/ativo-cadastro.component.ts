@@ -103,4 +103,9 @@ export class AtivoCadastroComponent implements OnInit {
     this.displayModal = false;
   }
 
+  editar(id: number) {
+    this.carregarAtivo(id);
+    this.showModalDialog();
+  }
+
 }
