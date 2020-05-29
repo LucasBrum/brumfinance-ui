@@ -19,8 +19,8 @@
             <td style="text-align: center;">{{venda.quantidade}}</td>
             <td style="text-align: center;">{{venda.precoCompra | currency: 'R$'}}</td>
             <td style="text-align: center;">{{venda.precoVenda | currency: 'R$' }}</td>
-            <td style="text-align: center;" [ngStyle]="{ color: venda.porcentagem < 0 ? 'red' : 'blue'}">{{venda.porcentagem + '%' }}</td>
-            <td style="text-align: center;" [ngStyle]="{ color: venda.porcentagem < 0 ? 'red' : 'green'}">{{venda.lucro | currency: 'R$' }}</td>
+            <td style="text-align: center;" [ngStyle]="{ color: venda.porcentagem < 0 ? 'red' : 'Aqua'}">{{venda.porcentagem + '%' }}</td>
+            <td style="text-align: center;" [ngStyle]="{ color: venda.porcentagem < 0 ? 'red' : 'Lime'}">{{venda.lucro | currency: 'R$' }}</td>
 
           </tr>
         </ng-template>

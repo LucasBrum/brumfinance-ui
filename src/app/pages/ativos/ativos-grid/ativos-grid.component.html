@@ -13,7 +13,7 @@
 </div>
 <div class="p-grid ui-fluid">
   <div class="ui-g-12 ui-md-6 ui-fluid">
-    <p-table [columns]="colunas" [value]="ativos" [loading]="loading" dataKey="codigo" [responsive]="true" #ativosGrid>
+    <p-table [columns]="colunas" [value]="ativos" [loading]="loading" dataKey="codigo" [responsive]="true" [rowHover]="true" #ativosGrid>
       <ng-template pTemplate="caption">
         Ativos Financeiros
       </ng-template>

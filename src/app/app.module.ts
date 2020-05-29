@@ -45,9 +45,7 @@ import { AportesModule } from './pages/aportes/aportes.module';
 registerLocaleData(localePt);
 
 const routes: Routes = [
-  {path: 'ativos', component: AtivoCadastroComponent},
-  {path: 'ativos/:id', component: AtivoCadastroComponent},
-  {path: 'aportes', component: AporteCadastroComponent},
+
   {path: 'vendas', component: VendaCadastroComponent}
 ];
 

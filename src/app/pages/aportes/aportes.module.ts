@@ -14,6 +14,7 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AportesRoutingModule } from './aportes-routing.module';
 
 
 
@@ -36,6 +37,8 @@ import { CommonModule } from '@angular/common';
     DropdownModule,
     InputTextModule,
     FieldsetModule,
+
+    AportesRoutingModule
   ]
 })
 export class AportesModule { }

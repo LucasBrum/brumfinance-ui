@@ -3,7 +3,7 @@
   <div class="ui-g">
     <div class="ui-g-12 ui-md-12 ui-fluid">
       <p-table [columns]="col" [value]="aportes" [loading]="loading" [responsive]="true" [paginator]="true"
-        [rows]="filtro.itensPorPagina" [lazy]="true" [totalRecords]="totalRegistros"
+        [rows]="filtro.itensPorPagina" [lazy]="true" [totalRecords]="totalRegistros" [rowHover]="true"
         (onLazyLoad)="aoMudarPagina($event)" #tabela>
         <ng-template pTemplate="header">
           <tr>
@@ -36,8 +36,8 @@
             <td style="text-align: center;" [ngStyle]="{'font-weight': 'bold'}">{{aporte.ativoFinanceiro.codigo}}</td>
             <td style="text-align: center;">{{aporte.ativoFinanceiro.categoriaAtivo.nome}}</td>
             <td style="text-align: center;">{{aporte.quantidade}}</td>
-            <td style="text-align: center;">{{aporte.custo | currency: 'R$' }}</td>
-            <td style="text-align: center;">{{aporte.valorTotal | currency: 'R$' }}</td>
+            <td style="text-align: center;" [ngStyle]="{'color': 'Gold'}">{{aporte.custo | currency: 'R$' }}</td>
+            <td style="text-align: center;" [ngStyle]="{'color': 'Lime'}">{{aporte.valorTotal | currency: 'R$' }}</td>
 
             <td>
               <button class="btn-edit" pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top">
