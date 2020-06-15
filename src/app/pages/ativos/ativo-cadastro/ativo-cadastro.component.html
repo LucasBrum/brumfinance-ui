@@ -1,7 +1,7 @@
 <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
   <div class="ui-g">
     <div class="ui-g-12 ui-md-12 ui-fluid">
-      <p-fieldset >
+      <p-fieldset legend="Opções" [toggleable]="true">
         <div class="ui-toolbar-group-left">
           <button type="button" class="btn-cadastrar-ativo" (click)="showModalDialog()" pButton icon="pi pi-save"
             label="Cadastrar Ativo"></button>

@@ -1,57 +1,54 @@
-<div class="container">
+<div class="p-grid ui-fluid">
+  <div class="ui-g-12 ui-md-12 ui-fluid">
+    <p-table [columns]="col" [value]="aportes" [loading]="loading" [responsive]="true" [paginator]="true"
+      [rows]="filtro.itensPorPagina" [lazy]="true" [totalRecords]="totalRegistros" [rowHover]="true"
+      (onLazyLoad)="aoMudarPagina($event)" #tabela>
+      <ng-template pTemplate="header">
+        <tr>
+          <th scope="col" [pSortableColumn]="'dataCompra'" id="th-data-compra">Data do Aporte
+          </th>
 
-  <div class="ui-g">
-    <div class="ui-g-12 ui-md-12 ui-fluid">
-      <p-table [columns]="col" [value]="aportes" [loading]="loading" [responsive]="true" [paginator]="true"
-        [rows]="filtro.itensPorPagina" [lazy]="true" [totalRecords]="totalRegistros" [rowHover]="true"
-        (onLazyLoad)="aoMudarPagina($event)" #tabela>
-        <ng-template pTemplate="header">
-          <tr>
-            <th scope="col" [pSortableColumn]="'dataCompra'" id="th-data-compra">Data do Aporte
-            </th>
+          <th scope="col">Ativo</th>
 
-            <th scope="col">Ativo</th>
+          <th scope="col" [pSortableColumn]="'ativoFinanceiro.categoriaAtivo.nome'">Categoria
+          </th>
 
-            <th scope="col" [pSortableColumn]="'ativoFinanceiro.categoriaAtivo.nome'">Categoria
-            </th>
+          <th scope="col" [pSortableColumn]="'quantidade'">Quantidade
+          </th>
 
-            <th scope="col" [pSortableColumn]="'quantidade'">Quantidade
-            </th>
+          <th scope="col" [pSortableColumn]="'custo'">Preço de Compra
+          </th>
 
-            <th scope="col" [pSortableColumn]="'custo'">Preço de Compra
-            </th>
+          <th scope="col" [pSortableColumn]="'valorTotal'">Valor Total
+          </th>
 
-            <th scope="col" [pSortableColumn]="'valorTotal'">Valor Total
-            </th>
+          <th style="width: 7em">
+            Ações
+          </th>
 
-            <th style="width: 7em">
-              Ações
-            </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-aporte let-columns="columns">
+        <tr>
+          <td style="text-align: center;">{{aporte.dataCompra | date:'dd/MM/yyyy'}}</td>
+          <td style="text-align: center;" [ngStyle]="{'font-weight': 'bold'}">{{aporte.ativoFinanceiro.codigo}}</td>
+          <td style="text-align: center;">{{aporte.ativoFinanceiro.categoriaAtivo.nome}}</td>
+          <td style="text-align: center;">{{aporte.quantidade}}</td>
+          <td style="text-align: center;" [ngStyle]="{'color': 'Gold'}">{{aporte.custo | currency: 'R$' }}</td>
+          <td style="text-align: center;" [ngStyle]="{'color': 'Lime'}">{{aporte.valorTotal | currency: 'R$' }}</td>
 
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-aporte let-columns="columns">
-          <tr>
-            <td style="text-align: center;">{{aporte.dataCompra | date:'dd/MM/yyyy'}}</td>
-            <td style="text-align: center;" [ngStyle]="{'font-weight': 'bold'}">{{aporte.ativoFinanceiro.codigo}}</td>
-            <td style="text-align: center;">{{aporte.ativoFinanceiro.categoriaAtivo.nome}}</td>
-            <td style="text-align: center;">{{aporte.quantidade}}</td>
-            <td style="text-align: center;" [ngStyle]="{'color': 'Gold'}">{{aporte.custo | currency: 'R$' }}</td>
-            <td style="text-align: center;" [ngStyle]="{'color': 'Lime'}">{{aporte.valorTotal | currency: 'R$' }}</td>
-
-            <td>
-              <button class="btn-edit" pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top">
-              </button>
-              <button class="btn-delete ui-button-danger" pButton icon="pi pi-trash" pTooltip="Excluir"
-                tooltipPosition="top" (click)="confirmarExclusao(aporte)">
-              </button>
-            </td>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="emptymessage">
-          Nenhum Aporte encontrado.
-        </ng-template>
-      </p-table>
-    </div>
+          <td>
+            <button class="btn-edit" pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top">
+            </button>
+            <button class="btn-delete ui-button-danger" pButton icon="pi pi-trash" pTooltip="Excluir"
+              tooltipPosition="top" (click)="confirmarExclusao(aporte)">
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        Nenhum Aporte encontrado.
+      </ng-template>
+    </p-table>
   </div>
 </div>
