@@ -41,11 +41,11 @@
 
           <td style="text-align: center;" [ngStyle]="{'font-weight': 'bold'}">{{ativo.codigo}}</td>
           <td style="text-align: center;">{{ativo.quantidade === null ? '0' : ativo.quantidade}}</td>
-          <td style="text-align: center;" [ngStyle]="{ color: 'Cyan'}">
+          <td style="text-align: center;" [ngStyle]="{ color: '#0000FF'}">
             {{ativo.precoAtual === null ? '0,00' : ativo.precoAtual | currency: 'R$'}}</td>
-          <td style="text-align: center;" [ngStyle]="{ color: ativo.totalDinheiro === null ? 'white' : 'LawnGreen'}">
+          <td style="text-align: center;" [ngStyle]="{ color: ativo.totalDinheiro === null ? 'white' : 'DarkGreen'}">
             {{ativo.totalDinheiro === null ? '0,00' : ativo.totalDinheiro | currency: 'R$'}}</td>
-          <td style="text-align: center;" [ngStyle]="{ color: ativo.totalPorcentagem < 0 ? 'Tomato' : 'Lime'}">
+          <td style="text-align: center;" [ngStyle]="{ color: ativo.totalPorcentagem < 0 ? 'Crimson' : 'ForestGreen'}">
             {{ativo.totalPorcentagem === null ? '0.0' : ativo.totalPorcentagem}}%</td>
           <td style="text-align: center;">
             {{ativo.dataAtualizacao === null ? '---' : ativo.dataAtualizacao | currency: 'R$'}}</td>
