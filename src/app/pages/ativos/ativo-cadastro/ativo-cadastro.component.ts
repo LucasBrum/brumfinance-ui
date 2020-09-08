@@ -36,7 +36,7 @@ export class AtivoCadastroComponent implements OnInit {
   ngOnInit(): void {
     const idAtivo = this.route.snapshot.params['id'];
 
-    if(idAtivo) {
+    if (idAtivo) {
       this.carregarAtivo(idAtivo);
     }
     this.carregarCategorias();
