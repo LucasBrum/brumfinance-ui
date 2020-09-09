@@ -94,9 +94,10 @@ export class AtivoCadastroComponent implements OnInit {
   }
 
   atualizarInfoAtivos() {
-    this.ativoService.atualizarInfoAtivos().subscribe(console.log);
-
-    this.ativosGrid.listar();
+    this.ativoService.atualizarInfoAtivos()
+    .subscribe(response => {
+      this.ativosGrid.listar();
+    });
   }
 
   carregarCategorias() {

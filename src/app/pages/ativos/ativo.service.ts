@@ -71,7 +71,6 @@ export class AtivoService {
   atualizarInfoAtivos() {
 
     return this.http.get<Ativo[]>(`${this.API}/ativos/atualizar-infos-ativos`);
-    this.listar();
   }
 
   buscarPorCodigo(id: number): Promise<Ativo> {
