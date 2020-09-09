@@ -10,6 +10,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   selector: 'app-ativos-grid',
   templateUrl: './ativos-grid.component.html',
   styleUrls: ['./ativos-grid.component.scss'],
+  preserveWhitespaces: true,
   animations: [
     trigger('rowExpansionTrigger', [
         state('void', style({
@@ -68,6 +69,9 @@ export class AtivosGridComponent implements OnInit {
     this.ativoService.listar()
       .then(resultado => {
         this.ativos = resultado.ativos;
+
+        this.totalInvestido = 0;
+        this.quantidadeDeAtivos = 0;
 
         this.ativos.forEach(ativo => {
           this.totalInvestido = this.totalInvestido + ativo.totalDinheiro;

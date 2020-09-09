@@ -9,6 +9,9 @@ import { CategoriaService } from '../categoria.service';
 import { Ativo, Categoria } from './../../../core/model';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { AtivosGridComponent } from './../ativos-grid/ativos-grid.component';
+import { interval, Subscription } from 'rxjs';
+import { take } from 'rxjs/operators';
+import { Message } from 'primeng/api/primeng-api';
 
 type ativo = Ativo;
 
@@ -21,9 +24,12 @@ export class AtivoCadastroComponent implements OnInit {
 
   @ViewChild('ativosGrid') ativosGrid: AtivosGridComponent;
 
+  outputMsg: Message[];
   ativo = new Ativo();
   categorias = new Categoria();
   displayModal = false;
+  statusNum: number = 0;
+  subscription$: Subscription;
 
   constructor(
     private categoriaService: CategoriaService,
@@ -34,6 +40,7 @@ export class AtivoCadastroComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
     const idAtivo = this.route.snapshot.params['id'];
 
     if (idAtivo) {
@@ -87,7 +94,9 @@ export class AtivoCadastroComponent implements OnInit {
   }
 
   atualizarInfoAtivos() {
-    alert('AtualizarInfoAtivos');
+    this.ativoService.atualizarInfoAtivos().subscribe(console.log);
+
+    this.ativosGrid.listar();
   }
 
   carregarCategorias() {

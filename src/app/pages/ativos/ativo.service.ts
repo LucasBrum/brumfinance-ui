@@ -3,7 +3,6 @@ import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Ativo } from '../../core/model';
-import { TmplAstRecursiveVisitor } from '@angular/compiler';
 
 export class AtivoFiltro {
   codigo: string;
@@ -67,6 +66,12 @@ export class AtivoService {
 
         return ativo;
       });
+  }
+
+  atualizarInfoAtivos() {
+
+    return this.http.get<Ativo[]>(`${this.API}/ativos/atualizar-infos-ativos`);
+    this.listar();
   }
 
   buscarPorCodigo(id: number): Promise<Ativo> {
