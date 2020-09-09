@@ -86,6 +86,10 @@ export class AtivoCadastroComponent implements OnInit {
       });
   }
 
+  atualizarInfoAtivos() {
+    alert('AtualizarInfoAtivos');
+  }
+
   carregarCategorias() {
     return this.categoriaService.listar()
       .then(categorias => {
