@@ -62,7 +62,7 @@ export class AtivoCadastroComponent implements OnInit {
   }
 
   salvar(form: FormControl) {
-    if(this.editando) {
+    if (this.editando) {
       this.atualizarAtivo(this.ativo);
     } else {
       this.adicionarAtivo(form);

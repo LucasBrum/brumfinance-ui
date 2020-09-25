@@ -34,8 +34,8 @@
           <td style="text-align: center;" [ngStyle]="{'font-weight': 'bold'}">{{aporte.ativoFinanceiro.codigo}}</td>
           <td style="text-align: center;">{{aporte.ativoFinanceiro.categoriaAtivo.nome}}</td>
           <td style="text-align: center;">{{aporte.quantidade}}</td>
-          <td style="text-align: center;" [ngStyle]="{'color': 'Gold'}">{{aporte.custo | currency: 'R$' }}</td>
-          <td style="text-align: center;" [ngStyle]="{'color': 'Lime'}">{{aporte.valorTotal | currency: 'R$' }}</td>
+          <td style="text-align: center;" [ngStyle]="{'color': '#0000FF'}">{{aporte.custo | currency: 'R$' }}</td>
+          <td style="text-align: center;" [ngStyle]="{'color': 'DarkGreen'}">{{aporte.valorTotal | currency: 'R$' }}</td>
 
           <td>
             <button class="btn-edit" pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top">
