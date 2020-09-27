@@ -57,9 +57,8 @@
             {{ativo.totalPorcentagem === null ? '0.0' : ativo.totalPorcentagem}}%
           </td>
           <td style="text-align: center;">
-            {{ativo.dataAtualizacao === null ? '---' : ativo.dataAtualizacao | date:'medium'}
-          }</td>
-
+            {{ativo.dataAtualizacao === null ? '---' : ativo.dataAtualizacao | date:'medium'}}
+          </td>
           <td>
             <button class="btn-edit" pButton icon="pi pi-pencil" (click)="editar.emit(ativo.id)" pTooltip="Editar"
               tooltipPosition="top" >
