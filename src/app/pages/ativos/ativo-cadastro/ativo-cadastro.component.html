@@ -4,11 +4,17 @@
       <p-fieldset legend="Opções" [toggleable]="true">
         <div class="ui-toolbar-group-left">
           <button type="button" class="btn-cadastrar-ativo" (click)="showModalDialog()" pButton icon="pi pi-save"
-            label="Cadastrar Ativo"></button>
+            label="Cadastrar Ativo">
+          </button>
         </div>
 
         <div class="ui-toolbar-group-left btn-atualizar-ativos">
-          <button pButton type="button" label="Atualizar ativos" (click)="atualizarInfoAtivos()" class="ui-button-success"></button>
+          <button pButton type="button" label="Atualizar ativos" (click)="atualizarInfoAtivos()" class="ui-button-success"
+            icon="pi pi-refresh"></button>
+        </div>
+
+        <div class="ui-toolbar-group-left btn-exibir-graficos">
+          <button pButton type="button" label="Exibir Gráficos" (click)="loadGraficos()" class="ui-button-warning" icon="pi pi-chart-bar"></button>
         </div>
 
         <div class="ui-toolbar-group-right btn-pesquisar">
@@ -22,18 +28,18 @@
       <p-dialog header="Cadastro de Ativos" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}">
         <div class="ui-g-12 ui-md-4 ui-fluid">
           <label>Nome do Ativo</label>
-          <input pInputText type="text" [(ngModel)]="ativo.nome" name="nome">
+          <input pInputText type="text" [(ngModel)]="ativo.nome" name="nome" required>
         </div>
 
         <div class="ui-g-12 ui-md-4 ui-fluid">
           <label>Código do Ativo</label>
-          <input pInputText type="text" [(ngModel)]="ativo.codigo" name="codigo">
+          <input pInputText type="text" [(ngModel)]="ativo.codigo" name="codigo" required>
         </div>
 
         <div class="ui-g-12 ui-md-4 ui-fluid">
           <label>Categoria</label>
           <p-dropdown [options]="categorias" placeholder="Selecione uma Categoria" [(ngModel)]="ativo.categoriaAtivo.id"
-            name="categoriaAtivo"></p-dropdown>
+            name="categoriaAtivo" required></p-dropdown>
         </div>
 
         <div class="ui-g-12 ui-md-12 ui-fluid">
@@ -49,7 +55,7 @@
         <p-footer>
           <button (click)="cancelar($event)" icon="pi pi-times" pButton type="submit" label="Cancelar"
             class="ui-button-secondary"></button>
-          <button pButton type="submit" icon="pi pi-check" label="Cadastrar"></button>
+          <button pButton type="submit" [disabled]="f.invalid" icon="pi pi-check" label="Cadastrar"></button>
         </p-footer>
 
       </p-dialog>
