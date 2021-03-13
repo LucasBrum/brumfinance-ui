@@ -16,9 +16,7 @@ export class SideBarComponent implements OnInit{
         {label: 'Dashboard', icon: 'pi pi-th-large',  routerLink: ['/']},
         {label: 'Ativos', icon: 'pi pi-money-bill',  routerLink: ['/ativos']},
         {label: 'Aportes', icon: 'pi pi-chart-line', routerLink: ['/aportes']},
-        {label: 'Vendas', icon: 'pi pi-ticket', routerLink: ['/vendas']},
-        {label: 'Minhas Finanças', icon: 'pi pi-home'},
-        {label: 'Dívidas', icon: 'pi pi-fw pi-minus-circle'}
+        {label: 'Metas', icon: 'pi pi-ticket', routerLink: ['/metas']}
       ];
   }
 

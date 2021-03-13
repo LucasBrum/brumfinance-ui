@@ -34,10 +34,7 @@ import { CoreModule } from './core/core.module';
 import { AtivoService, AtivoFiltro } from './pages/ativos/ativo.service';
 import { CategoriaService } from './pages/ativos/categoria.service';
 import { AporteService } from './pages/aportes/aporte.service';
-import { VendaService } from './pages/vendas/venda.service';
 import { AportesGridComponent } from './pages/aportes/aportes-grid/aportes-grid.component';
-import { VendaCadastroComponent } from './pages/vendas/venda-cadastro/venda-cadastro.component';
-import { VendasGridComponent } from './pages/vendas/vendas-grid/vendas-grid.component';
 import { Routes, RouterModule } from '@angular/router';
 import { AtivosCardsComponent } from './pages/ativos/ativos-cards/ativos-cards.component';
 import { AportesModule } from './pages/aportes/aportes.module';
@@ -46,16 +43,13 @@ registerLocaleData(localePt);
 
 const routes: Routes = [
 
-  {path: 'vendas', component: VendaCadastroComponent}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     AporteCadastroComponent,
-    AportesGridComponent,
-    VendaCadastroComponent,
-    VendasGridComponent
+    AportesGridComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -95,7 +89,6 @@ const routes: Routes = [
     ConfirmationService,
     AtivoFiltro,
     AporteService,
-    VendaService,
     {provide: LOCALE_ID, useValue: 'pt-BR'}
   ],
   bootstrap: [AppComponent]

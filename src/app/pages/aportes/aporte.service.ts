@@ -6,7 +6,7 @@ import { Aporte } from '../../core/model';
 export class AporteFiltro {
   codigo: string;
   pagina = 0;
-  itensPorPagina = 10;
+  itensPorPagina = 50;
 }
 
 @Injectable({
